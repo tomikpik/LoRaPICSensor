@@ -38,22 +38,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S5 . . ]
 "158
 [v _ANSELCbits `VS5 ~T0 @X0 0 e@3898 ]
-"6 soft_i2c.h
+"28 soft_i2c.h
 [v _I2C_Init `(v ~T0 @X0 0 ef ]
-"7
-[v _I2C_Start `(v ~T0 @X0 0 ef ]
-"9
-[v _I2C_Write_Byte `(v ~T0 @X0 0 ef1`uc ]
-"8
+"31
 [v _I2C_Stop `(v ~T0 @X0 0 ef ]
-"10
-[v _I2C_Read_Byte `(uc ~T0 @X0 0 ef1`uc ]
-"61 C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdlib.h
-[v _srand `(v ~T0 @X0 0 ef1`ui ]
-"58
-[v _strtol `(l ~T0 @X0 0 ef3`*Cuc`**uc`i ]
-"60
-[v _rand `(i ~T0 @X0 0 ef ]
+"29
+[v _I2C_Start `(v ~T0 @X0 0 ef ]
+"34
+[v _I2C_Write_Byte `(b ~T0 @X0 0 ef1`uc ]
+"35
+[v _I2C_Read_Byte `(uc ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7230,11 +7224,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;soft_i2c.h: 6: void I2C_Init();
-[; ;soft_i2c.h: 7: void I2C_Start();
-[; ;soft_i2c.h: 8: void I2C_Stop();
-[; ;soft_i2c.h: 9: void I2C_Write_Byte(char byt);
-[; ;soft_i2c.h: 10: char I2C_Read_Byte(char ack);
+[; ;soft_i2c.h: 28: void I2C_Init(void);
+[; ;soft_i2c.h: 29: void I2C_Start(void);
+[; ;soft_i2c.h: 30: void I2C_ReStart(void);
+[; ;soft_i2c.h: 31: void I2C_Stop(void);
+[; ;soft_i2c.h: 32: void I2C_Send_ACK(void);
+[; ;soft_i2c.h: 33: void I2C_Send_NACK(void);
+[; ;soft_i2c.h: 34: bit I2C_Write_Byte(unsigned char);
+[; ;soft_i2c.h: 35: unsigned char I2C_Read_Byte(void);
 "30 main.c
 [v _uuid `uc ~T0 @X0 -> 40 `i e ]
 [; ;main.c: 30: char uuid[40];
@@ -7542,199 +7539,90 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 117: I2C_Init();
 "117
 [e ( _I2C_Init ..  ]
-[; ;main.c: 119: I2C_Start();
+[; ;main.c: 118: wait_5ms(4);
+"118
+[e ( _wait_5ms (1 -> 4 `i ]
+[; ;main.c: 119: I2C_Stop();
 "119
-[e ( _I2C_Start ..  ]
-[; ;main.c: 120: I2C_Write_Byte(0x88);
-"120
-[e ( _I2C_Write_Byte (1 -> -> 136 `i `uc ]
-[; ;main.c: 121: I2C_Write_Byte(0x01);
-"121
-[e ( _I2C_Write_Byte (1 -> -> 1 `i `uc ]
-[; ;main.c: 122: I2C_Write_Byte(0xC4);
-"122
-[e ( _I2C_Write_Byte (1 -> -> 196 `i `uc ]
-[; ;main.c: 123: I2C_Write_Byte(0x10);
-"123
-[e ( _I2C_Write_Byte (1 -> -> 16 `i `uc ]
-[; ;main.c: 124: I2C_Stop();
-"124
 [e ( _I2C_Stop ..  ]
-[; ;main.c: 126: _delay((unsigned long)((1)*(64000000/4000.0)));
+[; ;main.c: 120: wait_5ms(4);
+"120
+[e ( _wait_5ms (1 -> 4 `i ]
+[; ;main.c: 123: I2C_Start();
+"123
+[e ( _I2C_Start ..  ]
+[; ;main.c: 124: I2C_Write_Byte(0x88);
+"124
+[e ( _I2C_Write_Byte (1 -> -> 136 `i `uc ]
+[; ;main.c: 125: I2C_Write_Byte(0x01);
+"125
+[e ( _I2C_Write_Byte (1 -> -> 1 `i `uc ]
+[; ;main.c: 126: I2C_Write_Byte(0xC4);
 "126
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 128: while(1){
+[e ( _I2C_Write_Byte (1 -> -> 196 `i `uc ]
+[; ;main.c: 127: I2C_Write_Byte(0x10);
+"127
+[e ( _I2C_Write_Byte (1 -> -> 16 `i `uc ]
+[; ;main.c: 128: I2C_Stop();
 "128
+[e ( _I2C_Stop ..  ]
+[; ;main.c: 130: _delay((unsigned long)((1)*(64000000/4000.0)));
+"130
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;main.c: 132: while(1){
+"132
 [e :U 1121 ]
 {
-[; ;main.c: 130: I2C_Start();
-"130
-[e ( _I2C_Start ..  ]
-[; ;main.c: 131: I2C_Write_Byte(0x88);
-"131
-[e ( _I2C_Write_Byte (1 -> -> 136 `i `uc ]
-[; ;main.c: 132: I2C_Write_Byte(0x7E);
-"132
-[e ( _I2C_Write_Byte (1 -> -> 126 `i `uc ]
-[; ;main.c: 133: I2C_Start();
-"133
-[e ( _I2C_Start ..  ]
-[; ;main.c: 134: I2C_Write_Byte(0x89);
+[; ;main.c: 134: I2C_Start();
 "134
-[e ( _I2C_Write_Byte (1 -> -> 137 `i `uc ]
+[e ( _I2C_Start ..  ]
+[; ;main.c: 135: I2C_Write_Byte(0x88);
 "135
-[v _msb `uc ~T0 @X0 1 a ]
-[; ;main.c: 135: uint8_t msb = I2C_Read_Byte(1);
-[e = _msb ( _I2C_Read_Byte (1 -> -> 1 `i `uc ]
+[e ( _I2C_Write_Byte (1 -> -> 136 `i `uc ]
+[; ;main.c: 136: I2C_Write_Byte(0x7E);
 "136
-[v _lsb `uc ~T0 @X0 1 a ]
-[; ;main.c: 136: uint8_t lsb = I2C_Read_Byte(0);
-[e = _lsb ( _I2C_Read_Byte (1 -> -> 0 `i `uc ]
-[; ;main.c: 137: I2C_Stop();
+[e ( _I2C_Write_Byte (1 -> -> 126 `i `uc ]
+[; ;main.c: 137: I2C_Start();
 "137
-[e ( _I2C_Stop ..  ]
-[; ;main.c: 138: printf("%x %x\r\n",msb,lsb);
+[e ( _I2C_Start ..  ]
+[; ;main.c: 138: I2C_Write_Byte(0x89);
 "138
-[e ( _printf , , (. :s 3C -> _msb `i -> _lsb `i ]
-[; ;main.c: 139: process_data_opt(msb,lsb);
+[e ( _I2C_Write_Byte (1 -> -> 137 `i `uc ]
 "139
-[e ( _process_data_opt (2 , _msb _lsb ]
-[; ;main.c: 141: wait_5ms(200);
+[v _msb `uc ~T0 @X0 1 a ]
+[; ;main.c: 139: uint8_t msb = I2C_Read_Byte();
+[e = _msb ( _I2C_Read_Byte ..  ]
+"140
+[v _lsb `uc ~T0 @X0 1 a ]
+[; ;main.c: 140: uint8_t lsb = I2C_Read_Byte();
+[e = _lsb ( _I2C_Read_Byte ..  ]
+[; ;main.c: 141: I2C_Stop();
 "141
+[e ( _I2C_Stop ..  ]
+[; ;main.c: 142: printf("%x %x\r\n",msb,lsb);
+"142
+[e ( _printf , , (. :s 3C -> _msb `i -> _lsb `i ]
+[; ;main.c: 143: process_data_opt(msb,lsb);
+"143
+[e ( _process_data_opt (2 , _msb _lsb ]
+[; ;main.c: 145: wait_5ms(200);
+"145
 [e ( _wait_5ms (1 -> 200 `i ]
-"144
+"147
 }
 [e :U 1120 ]
-"128
+"132
 [e $U 1121  ]
 [e :U 1122 ]
-[; ;main.c: 144: }
-[; ;main.c: 146: wait_5ms(5);
-"146
-[e ( _wait_5ms (1 -> 5 `i ]
-[; ;main.c: 147: printf("sys reset\r\n");
-"147
-[e ( _printf :s 4C ]
-[; ;main.c: 148: wait_5ms(5);
-"148
-[e ( _wait_5ms (1 -> 5 `i ]
-[; ;main.c: 149: printf("sys get ver\r\n");
+[; ;main.c: 147: }
+[; ;main.c: 149: return;
 "149
-[e ( _printf :s 5C ]
-[; ;main.c: 150: read_line();
-"150
-[e ( _read_line ..  ]
-[; ;main.c: 151: printf("radio get sf\r\n");
-"151
-[e ( _printf :s 6C ]
-[; ;main.c: 152: read_line();
-"152
-[e ( _read_line ..  ]
-[; ;main.c: 153: printf("radio get bw\r\n");
-"153
-[e ( _printf :s 7C ]
-[; ;main.c: 154: read_line();
-"154
-[e ( _read_line ..  ]
-[; ;main.c: 155: printf("radio get cr\r\n");
-"155
-[e ( _printf :s 8C ]
-[; ;main.c: 156: read_line();
-"156
-[e ( _read_line ..  ]
-[; ;main.c: 157: printf("radio get prlen\r\n");
-"157
-[e ( _printf :s 9C ]
-[; ;main.c: 158: read_line();
-"158
-[e ( _read_line ..  ]
-[; ;main.c: 159: printf("radio get pwr\r\n");
-"159
-[e ( _printf :s 10C ]
-[; ;main.c: 160: read_line();
-"160
-[e ( _read_line ..  ]
-[; ;main.c: 161: printf("mac pause\r\n");
-"161
-[e ( _printf :s 11C ]
-[; ;main.c: 162: read_line();
-"162
-[e ( _read_line ..  ]
-[; ;main.c: 164: printf("radio set pwr -2\r\n");
-"164
-[e ( _printf :s 12C ]
-[; ;main.c: 165: read_line();
-"165
-[e ( _read_line ..  ]
-[; ;main.c: 166: printf("radio set bw 500\r\n");
-"166
-[e ( _printf :s 13C ]
-[; ;main.c: 167: read_line();
-"167
-[e ( _read_line ..  ]
-[; ;main.c: 168: printf("radio set sf sf7\r\n");
-"168
-[e ( _printf :s 14C ]
-[; ;main.c: 169: read_line();
-"169
-[e ( _read_line ..  ]
-[; ;main.c: 170: printf("radio set cr 4/8\r\n");
-"170
-[e ( _printf :s 15C ]
-[; ;main.c: 171: read_line();
-"171
-[e ( _read_line ..  ]
-[; ;main.c: 172: printf("radio set crc on\r\n");
-"172
-[e ( _printf :s 16C ]
-[; ;main.c: 173: read_line();
-"173
-[e ( _read_line ..  ]
-[; ;main.c: 175: getUUID();
-"175
-[e ( _getUUID ..  ]
-[; ;main.c: 177: srand((int)strtol(uuid, (0), 0));
-"177
-[e ( _srand (1 -> -> ( _strtol (3 , , -> &U _uuid `*Cuc -> -> 0 `i `**uc -> 0 `i `i `ui ]
-"178
-[v _delay `i ~T0 @X0 1 a ]
-[; ;main.c: 178: int delay = 2000+(rand()%1000);
-[e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
-[; ;main.c: 179: printf("radio set wdt %d\r\n",delay);
-"179
-[e ( _printf , (. :s 17C _delay ]
-[; ;main.c: 180: read_line();
-"180
-[e ( _read_line ..  ]
-[; ;main.c: 194: printf("sys sleep 100000\r\n");
-"194
-[e ( _printf :s 18C ]
-[; ;main.c: 195: read_line();
-"195
-[e ( _read_line ..  ]
-[; ;main.c: 199: return;
-"199
 [e $UE 1119  ]
-[; ;main.c: 200: }
-"200
+[; ;main.c: 150: }
+"150
 [e :UE 1119 ]
 }
 [p f _printf 12583040 ]
 [a 3C 37 120 32 37 120 13 10 0 ]
-[a 7C 114 97 100 105 111 32 103 101 116 32 98 119 13 10 0 ]
-[a 4C 115 121 115 32 114 101 115 101 116 13 10 0 ]
-[a 10C 114 97 100 105 111 32 103 101 116 32 112 119 114 13 10 0 ]
-[a 5C 115 121 115 32 103 101 116 32 118 101 114 13 10 0 ]
-[a 8C 114 97 100 105 111 32 103 101 116 32 99 114 13 10 0 ]
-[a 16C 114 97 100 105 111 32 115 101 116 32 99 114 99 32 111 110 13 10 0 ]
-[a 9C 114 97 100 105 111 32 103 101 116 32 112 114 108 101 110 13 10 0 ]
 [a 1C 115 121 115 32 103 101 116 32 104 119 101 117 105 13 10 0 ]
-[a 6C 114 97 100 105 111 32 103 101 116 32 115 102 13 10 0 ]
-[a 11C 109 97 99 32 112 97 117 115 101 13 10 0 ]
-[a 17C 114 97 100 105 111 32 115 101 116 32 119 100 116 32 37 100 13 10 0 ]
 [a 2C 62 32 37 100 13 10 0 ]
-[a 15C 114 97 100 105 111 32 115 101 116 32 99 114 32 52 47 56 13 10 0 ]
-[a 14C 114 97 100 105 111 32 115 101 116 32 115 102 32 115 102 55 13 10 0 ]
-[a 12C 114 97 100 105 111 32 115 101 116 32 112 119 114 32 45 50 13 10 0 ]
-[a 13C 114 97 100 105 111 32 115 101 116 32 98 119 32 53 48 48 13 10 0 ]
-[a 18C 115 121 115 32 115 108 101 101 112 32 49 48 48 48 48 48 13 10 0 ]

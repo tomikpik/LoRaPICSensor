@@ -115,6 +115,10 @@ void main(void) {
     ANSELCbits.ANSC4=0;
 
     I2C_Init();
+    wait_5ms(4);  
+    I2C_Stop();
+    wait_5ms(4);  
+    
     
     I2C_Start();
     I2C_Write_Byte(0x88);
@@ -132,69 +136,15 @@ void main(void) {
         I2C_Write_Byte(0x7E);
         I2C_Start();
         I2C_Write_Byte(0x89);
-        uint8_t msb = I2C_Read_Byte(1);
-        uint8_t lsb = I2C_Read_Byte(0);
+        uint8_t msb = I2C_Read_Byte();
+        uint8_t lsb = I2C_Read_Byte();
         I2C_Stop();
         printf("%x %x\r\n",msb,lsb);
         process_data_opt(msb,lsb);
         
-        wait_5ms(200);
-        
+        wait_5ms(200);        
         
     }
-    
-    wait_5ms(5); 
-    printf("sys reset\r\n");
-    wait_5ms(5); 
-    printf("sys get ver\r\n");
-    read_line(); 
-    printf("radio get sf\r\n");
-    read_line();  
-    printf("radio get bw\r\n");
-    read_line();  
-    printf("radio get cr\r\n");
-    read_line();  
-    printf("radio get prlen\r\n");
-    read_line(); 
-    printf("radio get pwr\r\n");
-    read_line(); 
-    printf("mac pause\r\n");
-    read_line(); 
-           
-    printf("radio set pwr -2\r\n");
-    read_line(); 
-    printf("radio set bw 500\r\n");
-    read_line(); 
-    printf("radio set sf sf7\r\n");
-    read_line(); 
-    printf("radio set cr 4/8\r\n");
-    read_line(); 
-    printf("radio set crc on\r\n");
-    read_line();
-    
-    getUUID();
-     
-    srand((int)strtol(uuid, NULL, 0));
-    int delay = 2000+(rand()%1000);
-    printf("radio set wdt %d\r\n",delay);
-    read_line(); 
-    
-   
-    /*
-    printf("radio set pwr -3\r\n");
-    for(uint8_t i=0;i<10;i++) { __delay_ms(10); }
-    printf("radio set mod fsk\r\n");
-    for(uint8_t i=0;i<10;i++) { __delay_ms(10); }
-    printf("radio set bt 1.0\r\n");
-    for(uint8_t i=0;i<10;i++) { __delay_ms(10); }
-    printf("radio set rxbw 2.6\r\n");
-    for(uint8_t i=0;i<10;i++) { __delay_ms(10); }
-    */
-            
-    printf("sys sleep 100000\r\n");
-    read_line();
-    
-   
-    
+  
     return;
 }
