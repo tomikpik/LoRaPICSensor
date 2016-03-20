@@ -38,16 +38,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S5 . . ]
 "158
 [v _ANSELCbits `VS5 ~T0 @X0 0 e@3898 ]
-"29 soft_i2c.h
-[v _InitI2C `(v ~T0 @X0 0 ef ]
-"30
+"6 soft_i2c.h
+[v _I2C_Init `(v ~T0 @X0 0 ef ]
+"7
 [v _I2C_Start `(v ~T0 @X0 0 ef ]
-"35
-[v _I2C_Write_Byte `(b ~T0 @X0 0 ef1`uc ]
-"32
+"9
+[v _I2C_Write_Byte `(v ~T0 @X0 0 ef1`uc ]
+"8
 [v _I2C_Stop `(v ~T0 @X0 0 ef ]
-"36
-[v _I2C_Read_Byte `(uc ~T0 @X0 0 ef ]
+"10
+[v _I2C_Read_Byte `(uc ~T0 @X0 0 ef1`uc ]
 "61 C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdlib.h
 [v _srand `(v ~T0 @X0 0 ef1`ui ]
 "58
@@ -7230,14 +7230,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;soft_i2c.h: 29: void InitI2C(void);
-[; ;soft_i2c.h: 30: void I2C_Start(void);
-[; ;soft_i2c.h: 31: void I2C_ReStart(void);
-[; ;soft_i2c.h: 32: void I2C_Stop(void);
-[; ;soft_i2c.h: 33: void I2C_Send_ACK(void);
-[; ;soft_i2c.h: 34: void I2C_Send_NACK(void);
-[; ;soft_i2c.h: 35: bit I2C_Write_Byte(unsigned char);
-[; ;soft_i2c.h: 36: unsigned char I2C_Read_Byte(void);
+[; ;soft_i2c.h: 6: void I2C_Init();
+[; ;soft_i2c.h: 7: void I2C_Start();
+[; ;soft_i2c.h: 8: void I2C_Stop();
+[; ;soft_i2c.h: 9: void I2C_Write_Byte(char byt);
+[; ;soft_i2c.h: 10: char I2C_Read_Byte(char ack);
 "30 main.c
 [v _uuid `uc ~T0 @X0 -> 40 `i e ]
 [; ;main.c: 30: char uuid[40];
@@ -7542,9 +7539,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 115: ANSELCbits.ANSC4=0;
 "115
 [e = . . _ANSELCbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 117: InitI2C();
+[; ;main.c: 117: I2C_Init();
 "117
-[e ( _InitI2C ..  ]
+[e ( _I2C_Init ..  ]
 [; ;main.c: 119: I2C_Start();
 "119
 [e ( _I2C_Start ..  ]
@@ -7587,12 +7584,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _I2C_Write_Byte (1 -> -> 137 `i `uc ]
 "135
 [v _msb `uc ~T0 @X0 1 a ]
-[; ;main.c: 135: uint8_t msb = I2C_Read_Byte();
-[e = _msb ( _I2C_Read_Byte ..  ]
+[; ;main.c: 135: uint8_t msb = I2C_Read_Byte(1);
+[e = _msb ( _I2C_Read_Byte (1 -> -> 1 `i `uc ]
 "136
 [v _lsb `uc ~T0 @X0 1 a ]
-[; ;main.c: 136: uint8_t lsb = I2C_Read_Byte();
-[e = _lsb ( _I2C_Read_Byte ..  ]
+[; ;main.c: 136: uint8_t lsb = I2C_Read_Byte(0);
+[e = _lsb ( _I2C_Read_Byte (1 -> -> 0 `i `uc ]
 [; ;main.c: 137: I2C_Stop();
 "137
 [e ( _I2C_Stop ..  ]
@@ -7602,421 +7599,124 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 139: process_data_opt(msb,lsb);
 "139
 [e ( _process_data_opt (2 , _msb _lsb ]
-[; ;main.c: 141: _delay((unsigned long)((10)*(64000000/4000.0)));
+[; ;main.c: 141: wait_5ms(200);
 "141
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 142: _delay((unsigned long)((10)*(64000000/4000.0)));
-"142
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 143: _delay((unsigned long)((10)*(64000000/4000.0)));
-"143
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 144: _delay((unsigned long)((10)*(64000000/4000.0)));
+[e ( _wait_5ms (1 -> 200 `i ]
 "144
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 145: _delay((unsigned long)((10)*(64000000/4000.0)));
-"145
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 146: _delay((unsigned long)((10)*(64000000/4000.0)));
-"146
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 147: _delay((unsigned long)((10)*(64000000/4000.0)));
-"147
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 148: _delay((unsigned long)((10)*(64000000/4000.0)));
-"148
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 149: _delay((unsigned long)((10)*(64000000/4000.0)));
-"149
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 150: _delay((unsigned long)((10)*(64000000/4000.0)));
-"150
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 151: _delay((unsigned long)((10)*(64000000/4000.0)));
-"151
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 152: _delay((unsigned long)((10)*(64000000/4000.0)));
-"152
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 153: _delay((unsigned long)((10)*(64000000/4000.0)));
-"153
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 154: _delay((unsigned long)((10)*(64000000/4000.0)));
-"154
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 155: _delay((unsigned long)((10)*(64000000/4000.0)));
-"155
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 156: _delay((unsigned long)((10)*(64000000/4000.0)));
-"156
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 157: _delay((unsigned long)((10)*(64000000/4000.0)));
-"157
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 158: _delay((unsigned long)((10)*(64000000/4000.0)));
-"158
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 159: _delay((unsigned long)((10)*(64000000/4000.0)));
-"159
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 160: _delay((unsigned long)((10)*(64000000/4000.0)));
-"160
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 161: _delay((unsigned long)((10)*(64000000/4000.0)));
-"161
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 162: _delay((unsigned long)((10)*(64000000/4000.0)));
-"162
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 163: _delay((unsigned long)((10)*(64000000/4000.0)));
-"163
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 164: _delay((unsigned long)((10)*(64000000/4000.0)));
-"164
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 165: _delay((unsigned long)((10)*(64000000/4000.0)));
-"165
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 166: _delay((unsigned long)((10)*(64000000/4000.0)));
-"166
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 167: _delay((unsigned long)((10)*(64000000/4000.0)));
-"167
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 168: _delay((unsigned long)((10)*(64000000/4000.0)));
-"168
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 169: _delay((unsigned long)((10)*(64000000/4000.0)));
-"169
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 170: _delay((unsigned long)((10)*(64000000/4000.0)));
-"170
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 171: _delay((unsigned long)((10)*(64000000/4000.0)));
-"171
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 172: _delay((unsigned long)((10)*(64000000/4000.0)));
-"172
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 173: _delay((unsigned long)((10)*(64000000/4000.0)));
-"173
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 174: _delay((unsigned long)((10)*(64000000/4000.0)));
-"174
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 175: _delay((unsigned long)((10)*(64000000/4000.0)));
-"175
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 176: _delay((unsigned long)((10)*(64000000/4000.0)));
-"176
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 177: _delay((unsigned long)((10)*(64000000/4000.0)));
-"177
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 178: _delay((unsigned long)((10)*(64000000/4000.0)));
-"178
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 179: _delay((unsigned long)((10)*(64000000/4000.0)));
-"179
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 180: _delay((unsigned long)((10)*(64000000/4000.0)));
-"180
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 181: _delay((unsigned long)((10)*(64000000/4000.0)));
-"181
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 182: _delay((unsigned long)((10)*(64000000/4000.0)));
-"182
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 183: _delay((unsigned long)((10)*(64000000/4000.0)));
-"183
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 184: _delay((unsigned long)((10)*(64000000/4000.0)));
-"184
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 185: _delay((unsigned long)((10)*(64000000/4000.0)));
-"185
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 186: _delay((unsigned long)((10)*(64000000/4000.0)));
-"186
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 187: _delay((unsigned long)((10)*(64000000/4000.0)));
-"187
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 188: _delay((unsigned long)((10)*(64000000/4000.0)));
-"188
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 189: _delay((unsigned long)((10)*(64000000/4000.0)));
-"189
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 190: _delay((unsigned long)((10)*(64000000/4000.0)));
-"190
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 191: _delay((unsigned long)((10)*(64000000/4000.0)));
-"191
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 192: _delay((unsigned long)((10)*(64000000/4000.0)));
-"192
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 193: _delay((unsigned long)((10)*(64000000/4000.0)));
-"193
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 194: _delay((unsigned long)((10)*(64000000/4000.0)));
-"194
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 195: _delay((unsigned long)((10)*(64000000/4000.0)));
-"195
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 196: _delay((unsigned long)((10)*(64000000/4000.0)));
-"196
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 197: _delay((unsigned long)((10)*(64000000/4000.0)));
-"197
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 198: _delay((unsigned long)((10)*(64000000/4000.0)));
-"198
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 199: _delay((unsigned long)((10)*(64000000/4000.0)));
-"199
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 200: _delay((unsigned long)((10)*(64000000/4000.0)));
-"200
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 201: _delay((unsigned long)((10)*(64000000/4000.0)));
-"201
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 202: _delay((unsigned long)((10)*(64000000/4000.0)));
-"202
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 203: _delay((unsigned long)((10)*(64000000/4000.0)));
-"203
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 204: _delay((unsigned long)((10)*(64000000/4000.0)));
-"204
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 205: _delay((unsigned long)((10)*(64000000/4000.0)));
-"205
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 206: _delay((unsigned long)((10)*(64000000/4000.0)));
-"206
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 207: _delay((unsigned long)((10)*(64000000/4000.0)));
-"207
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 208: _delay((unsigned long)((10)*(64000000/4000.0)));
-"208
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 209: _delay((unsigned long)((10)*(64000000/4000.0)));
-"209
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 210: _delay((unsigned long)((10)*(64000000/4000.0)));
-"210
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 211: _delay((unsigned long)((10)*(64000000/4000.0)));
-"211
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 212: _delay((unsigned long)((10)*(64000000/4000.0)));
-"212
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 213: _delay((unsigned long)((10)*(64000000/4000.0)));
-"213
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 214: _delay((unsigned long)((10)*(64000000/4000.0)));
-"214
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 215: _delay((unsigned long)((10)*(64000000/4000.0)));
-"215
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 216: _delay((unsigned long)((10)*(64000000/4000.0)));
-"216
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 217: _delay((unsigned long)((10)*(64000000/4000.0)));
-"217
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 218: _delay((unsigned long)((10)*(64000000/4000.0)));
-"218
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 219: _delay((unsigned long)((10)*(64000000/4000.0)));
-"219
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 220: _delay((unsigned long)((10)*(64000000/4000.0)));
-"220
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 221: _delay((unsigned long)((10)*(64000000/4000.0)));
-"221
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 222: _delay((unsigned long)((10)*(64000000/4000.0)));
-"222
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 223: _delay((unsigned long)((10)*(64000000/4000.0)));
-"223
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 224: _delay((unsigned long)((10)*(64000000/4000.0)));
-"224
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 225: _delay((unsigned long)((10)*(64000000/4000.0)));
-"225
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 226: _delay((unsigned long)((10)*(64000000/4000.0)));
-"226
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 227: _delay((unsigned long)((10)*(64000000/4000.0)));
-"227
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 228: _delay((unsigned long)((10)*(64000000/4000.0)));
-"228
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 229: _delay((unsigned long)((10)*(64000000/4000.0)));
-"229
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 230: _delay((unsigned long)((10)*(64000000/4000.0)));
-"230
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 231: _delay((unsigned long)((10)*(64000000/4000.0)));
-"231
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 232: _delay((unsigned long)((10)*(64000000/4000.0)));
-"232
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 233: _delay((unsigned long)((10)*(64000000/4000.0)));
-"233
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 234: _delay((unsigned long)((10)*(64000000/4000.0)));
-"234
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 235: _delay((unsigned long)((10)*(64000000/4000.0)));
-"235
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 236: _delay((unsigned long)((10)*(64000000/4000.0)));
-"236
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 237: _delay((unsigned long)((10)*(64000000/4000.0)));
-"237
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 238: _delay((unsigned long)((10)*(64000000/4000.0)));
-"238
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 239: _delay((unsigned long)((10)*(64000000/4000.0)));
-"239
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 240: _delay((unsigned long)((10)*(64000000/4000.0)));
-"240
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"243
 }
 [e :U 1120 ]
 "128
 [e $U 1121  ]
 [e :U 1122 ]
-[; ;main.c: 243: }
-[; ;main.c: 245: wait_5ms(5);
-"245
+[; ;main.c: 144: }
+[; ;main.c: 146: wait_5ms(5);
+"146
 [e ( _wait_5ms (1 -> 5 `i ]
-[; ;main.c: 246: printf("sys reset\r\n");
-"246
+[; ;main.c: 147: printf("sys reset\r\n");
+"147
 [e ( _printf :s 4C ]
-[; ;main.c: 247: wait_5ms(5);
-"247
+[; ;main.c: 148: wait_5ms(5);
+"148
 [e ( _wait_5ms (1 -> 5 `i ]
-[; ;main.c: 248: printf("sys get ver\r\n");
-"248
+[; ;main.c: 149: printf("sys get ver\r\n");
+"149
 [e ( _printf :s 5C ]
-[; ;main.c: 249: read_line();
-"249
+[; ;main.c: 150: read_line();
+"150
 [e ( _read_line ..  ]
-[; ;main.c: 250: printf("radio get sf\r\n");
-"250
+[; ;main.c: 151: printf("radio get sf\r\n");
+"151
 [e ( _printf :s 6C ]
-[; ;main.c: 251: read_line();
-"251
+[; ;main.c: 152: read_line();
+"152
 [e ( _read_line ..  ]
-[; ;main.c: 252: printf("radio get bw\r\n");
-"252
+[; ;main.c: 153: printf("radio get bw\r\n");
+"153
 [e ( _printf :s 7C ]
-[; ;main.c: 253: read_line();
-"253
+[; ;main.c: 154: read_line();
+"154
 [e ( _read_line ..  ]
-[; ;main.c: 254: printf("radio get cr\r\n");
-"254
+[; ;main.c: 155: printf("radio get cr\r\n");
+"155
 [e ( _printf :s 8C ]
-[; ;main.c: 255: read_line();
-"255
+[; ;main.c: 156: read_line();
+"156
 [e ( _read_line ..  ]
-[; ;main.c: 256: printf("radio get prlen\r\n");
-"256
+[; ;main.c: 157: printf("radio get prlen\r\n");
+"157
 [e ( _printf :s 9C ]
-[; ;main.c: 257: read_line();
-"257
+[; ;main.c: 158: read_line();
+"158
 [e ( _read_line ..  ]
-[; ;main.c: 258: printf("radio get pwr\r\n");
-"258
+[; ;main.c: 159: printf("radio get pwr\r\n");
+"159
 [e ( _printf :s 10C ]
-[; ;main.c: 259: read_line();
-"259
+[; ;main.c: 160: read_line();
+"160
 [e ( _read_line ..  ]
-[; ;main.c: 260: printf("mac pause\r\n");
-"260
+[; ;main.c: 161: printf("mac pause\r\n");
+"161
 [e ( _printf :s 11C ]
-[; ;main.c: 261: read_line();
-"261
+[; ;main.c: 162: read_line();
+"162
 [e ( _read_line ..  ]
-[; ;main.c: 263: printf("radio set pwr -2\r\n");
-"263
+[; ;main.c: 164: printf("radio set pwr -2\r\n");
+"164
 [e ( _printf :s 12C ]
-[; ;main.c: 264: read_line();
-"264
+[; ;main.c: 165: read_line();
+"165
 [e ( _read_line ..  ]
-[; ;main.c: 265: printf("radio set bw 500\r\n");
-"265
+[; ;main.c: 166: printf("radio set bw 500\r\n");
+"166
 [e ( _printf :s 13C ]
-[; ;main.c: 266: read_line();
-"266
+[; ;main.c: 167: read_line();
+"167
 [e ( _read_line ..  ]
-[; ;main.c: 267: printf("radio set sf sf7\r\n");
-"267
+[; ;main.c: 168: printf("radio set sf sf7\r\n");
+"168
 [e ( _printf :s 14C ]
-[; ;main.c: 268: read_line();
-"268
+[; ;main.c: 169: read_line();
+"169
 [e ( _read_line ..  ]
-[; ;main.c: 269: printf("radio set cr 4/8\r\n");
-"269
+[; ;main.c: 170: printf("radio set cr 4/8\r\n");
+"170
 [e ( _printf :s 15C ]
-[; ;main.c: 270: read_line();
-"270
+[; ;main.c: 171: read_line();
+"171
 [e ( _read_line ..  ]
-[; ;main.c: 271: printf("radio set crc on\r\n");
-"271
+[; ;main.c: 172: printf("radio set crc on\r\n");
+"172
 [e ( _printf :s 16C ]
-[; ;main.c: 272: read_line();
-"272
+[; ;main.c: 173: read_line();
+"173
 [e ( _read_line ..  ]
-[; ;main.c: 274: getUUID();
-"274
+[; ;main.c: 175: getUUID();
+"175
 [e ( _getUUID ..  ]
-[; ;main.c: 276: srand((int)strtol(uuid, (0), 0));
-"276
+[; ;main.c: 177: srand((int)strtol(uuid, (0), 0));
+"177
 [e ( _srand (1 -> -> ( _strtol (3 , , -> &U _uuid `*Cuc -> -> 0 `i `**uc -> 0 `i `i `ui ]
-"277
+"178
 [v _delay `i ~T0 @X0 1 a ]
-[; ;main.c: 277: int delay = 2000+(rand()%1000);
+[; ;main.c: 178: int delay = 2000+(rand()%1000);
 [e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
-[; ;main.c: 278: printf("radio set wdt %d\r\n",delay);
-"278
+[; ;main.c: 179: printf("radio set wdt %d\r\n",delay);
+"179
 [e ( _printf , (. :s 17C _delay ]
-[; ;main.c: 279: read_line();
-"279
+[; ;main.c: 180: read_line();
+"180
 [e ( _read_line ..  ]
-[; ;main.c: 293: printf("sys sleep 100000\r\n");
-"293
+[; ;main.c: 194: printf("sys sleep 100000\r\n");
+"194
 [e ( _printf :s 18C ]
-[; ;main.c: 294: read_line();
-"294
+[; ;main.c: 195: read_line();
+"195
 [e ( _read_line ..  ]
-[; ;main.c: 298: return;
-"298
+[; ;main.c: 199: return;
+"199
 [e $UE 1119  ]
-[; ;main.c: 299: }
-"299
+[; ;main.c: 200: }
+"200
 [e :UE 1119 ]
 }
 [p f _printf 12583040 ]

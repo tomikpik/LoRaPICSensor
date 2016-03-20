@@ -9114,15 +9114,12 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
-# 29 "soft_i2c.h"
-void InitI2C(void);
-void I2C_Start(void);
-void I2C_ReStart(void);
-void I2C_Stop(void);
-void I2C_Send_ACK(void);
-void I2C_Send_NACK(void);
-bit I2C_Write_Byte(unsigned char);
-unsigned char I2C_Read_Byte(void);
+# 6 "soft_i2c.h"
+void I2C_Init();
+void I2C_Start();
+void I2C_Stop();
+void I2C_Write_Byte(char byt);
+char I2C_Read_Byte(char ack);
 
 # 30 "main.c"
 char uuid[40];
@@ -9212,7 +9209,7 @@ SYSTEM_Initialize();
 (INTCONbits.PEIE = 1);
 ANSELCbits.ANSC4=0;
 
-InitI2C();
+I2C_Init();
 
 I2C_Start();
 I2C_Write_Byte(0x88);
@@ -9230,112 +9227,13 @@ I2C_Write_Byte(0x88);
 I2C_Write_Byte(0x7E);
 I2C_Start();
 I2C_Write_Byte(0x89);
-uint8_t msb = I2C_Read_Byte();
-uint8_t lsb = I2C_Read_Byte();
+uint8_t msb = I2C_Read_Byte(1);
+uint8_t lsb = I2C_Read_Byte(0);
 I2C_Stop();
 printf("%x %x\r\n",msb,lsb);
 process_data_opt(msb,lsb);
 
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
+wait_5ms(200);
 
 
 }
@@ -9376,7 +9274,7 @@ int delay = 2000+(rand()%1000);
 printf("radio set wdt %d\r\n",delay);
 read_line();
 
-# 293
+# 194
 printf("sys sleep 100000\r\n");
 read_line();
 
