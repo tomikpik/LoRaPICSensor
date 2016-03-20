@@ -38,16 +38,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S5 . . ]
 "158
 [v _ANSELCbits `VS5 ~T0 @X0 0 e@3898 ]
-"6 soft_i2c.h
-[v _Soft_I2C_Init `(v ~T0 @X0 0 ef ]
-"7
-[v _Soft_I2C_Start `(v ~T0 @X0 0 ef ]
-"9
-[v _Soft_I2C_WriteByte `(v ~T0 @X0 0 ef1`uc ]
-"8
-[v _Soft_I2C_Stop `(v ~T0 @X0 0 ef ]
-"10
-[v _Soft_I2C_ReadByte `(uc ~T0 @X0 0 ef1`uc ]
+"29 soft_i2c.h
+[v _InitI2C `(v ~T0 @X0 0 ef ]
+"30
+[v _I2C_Start `(v ~T0 @X0 0 ef ]
+"35
+[v _I2C_Write_Byte `(b ~T0 @X0 0 ef1`uc ]
+"32
+[v _I2C_Stop `(v ~T0 @X0 0 ef ]
+"36
+[v _I2C_Read_Byte `(uc ~T0 @X0 0 ef ]
 "61 C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdlib.h
 [v _srand `(v ~T0 @X0 0 ef1`ui ]
 "58
@@ -7230,11 +7230,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;soft_i2c.h: 6: void Soft_I2C_Init();
-[; ;soft_i2c.h: 7: void Soft_I2C_Start();
-[; ;soft_i2c.h: 8: void Soft_I2C_Stop();
-[; ;soft_i2c.h: 9: void Soft_I2C_WriteByte(char byt);
-[; ;soft_i2c.h: 10: char Soft_I2C_ReadByte(char ack);
+[; ;soft_i2c.h: 29: void InitI2C(void);
+[; ;soft_i2c.h: 30: void I2C_Start(void);
+[; ;soft_i2c.h: 31: void I2C_ReStart(void);
+[; ;soft_i2c.h: 32: void I2C_Stop(void);
+[; ;soft_i2c.h: 33: void I2C_Send_ACK(void);
+[; ;soft_i2c.h: 34: void I2C_Send_NACK(void);
+[; ;soft_i2c.h: 35: bit I2C_Write_Byte(unsigned char);
+[; ;soft_i2c.h: 36: unsigned char I2C_Read_Byte(void);
 "30 main.c
 [v _uuid `uc ~T0 @X0 -> 40 `i e ]
 [; ;main.c: 30: char uuid[40];
@@ -7539,66 +7542,69 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 115: ANSELCbits.ANSC4=0;
 "115
 [e = . . _ANSELCbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 118: Soft_I2C_Init();
-"118
-[e ( _Soft_I2C_Init ..  ]
-[; ;main.c: 120: Soft_I2C_Start();
+[; ;main.c: 117: InitI2C();
+"117
+[e ( _InitI2C ..  ]
+[; ;main.c: 119: I2C_Start();
+"119
+[e ( _I2C_Start ..  ]
+[; ;main.c: 120: I2C_Write_Byte(0x88);
 "120
-[e ( _Soft_I2C_Start ..  ]
-[; ;main.c: 121: Soft_I2C_WriteByte(0x88);
+[e ( _I2C_Write_Byte (1 -> -> 136 `i `uc ]
+[; ;main.c: 121: I2C_Write_Byte(0x01);
 "121
-[e ( _Soft_I2C_WriteByte (1 -> -> 136 `i `uc ]
-[; ;main.c: 122: Soft_I2C_WriteByte(0x01);
+[e ( _I2C_Write_Byte (1 -> -> 1 `i `uc ]
+[; ;main.c: 122: I2C_Write_Byte(0xC4);
 "122
-[e ( _Soft_I2C_WriteByte (1 -> -> 1 `i `uc ]
-[; ;main.c: 123: Soft_I2C_WriteByte(0xC4);
+[e ( _I2C_Write_Byte (1 -> -> 196 `i `uc ]
+[; ;main.c: 123: I2C_Write_Byte(0x10);
 "123
-[e ( _Soft_I2C_WriteByte (1 -> -> 196 `i `uc ]
-[; ;main.c: 124: Soft_I2C_WriteByte(0x10);
+[e ( _I2C_Write_Byte (1 -> -> 16 `i `uc ]
+[; ;main.c: 124: I2C_Stop();
 "124
-[e ( _Soft_I2C_WriteByte (1 -> -> 16 `i `uc ]
-[; ;main.c: 125: Soft_I2C_Stop();
-"125
-[e ( _Soft_I2C_Stop ..  ]
-[; ;main.c: 127: _delay((unsigned long)((1)*(64000000/4000.0)));
-"127
+[e ( _I2C_Stop ..  ]
+[; ;main.c: 126: _delay((unsigned long)((1)*(64000000/4000.0)));
+"126
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 129: while(1){
-"129
+[; ;main.c: 128: while(1){
+"128
 [e :U 1121 ]
 {
-[; ;main.c: 131: Soft_I2C_Start();
+[; ;main.c: 130: I2C_Start();
+"130
+[e ( _I2C_Start ..  ]
+[; ;main.c: 131: I2C_Write_Byte(0x88);
 "131
-[e ( _Soft_I2C_Start ..  ]
-[; ;main.c: 132: Soft_I2C_WriteByte(0x88);
+[e ( _I2C_Write_Byte (1 -> -> 136 `i `uc ]
+[; ;main.c: 132: I2C_Write_Byte(0x7E);
 "132
-[e ( _Soft_I2C_WriteByte (1 -> -> 136 `i `uc ]
-[; ;main.c: 133: Soft_I2C_WriteByte(0x7E);
+[e ( _I2C_Write_Byte (1 -> -> 126 `i `uc ]
+[; ;main.c: 133: I2C_Start();
 "133
-[e ( _Soft_I2C_WriteByte (1 -> -> 126 `i `uc ]
-[; ;main.c: 134: Soft_I2C_Start();
+[e ( _I2C_Start ..  ]
+[; ;main.c: 134: I2C_Write_Byte(0x89);
 "134
-[e ( _Soft_I2C_Start ..  ]
-[; ;main.c: 135: Soft_I2C_WriteByte(0x89);
+[e ( _I2C_Write_Byte (1 -> -> 137 `i `uc ]
 "135
-[e ( _Soft_I2C_WriteByte (1 -> -> 137 `i `uc ]
-"136
 [v _msb `uc ~T0 @X0 1 a ]
-[; ;main.c: 136: uint8_t msb = Soft_I2C_ReadByte(1);
-[e = _msb ( _Soft_I2C_ReadByte (1 -> -> 1 `i `uc ]
-"137
+[; ;main.c: 135: uint8_t msb = I2C_Read_Byte();
+[e = _msb ( _I2C_Read_Byte ..  ]
+"136
 [v _lsb `uc ~T0 @X0 1 a ]
-[; ;main.c: 137: uint8_t lsb = Soft_I2C_ReadByte(0);
-[e = _lsb ( _Soft_I2C_ReadByte (1 -> -> 0 `i `uc ]
-[; ;main.c: 138: Soft_I2C_Stop();
+[; ;main.c: 136: uint8_t lsb = I2C_Read_Byte();
+[e = _lsb ( _I2C_Read_Byte ..  ]
+[; ;main.c: 137: I2C_Stop();
+"137
+[e ( _I2C_Stop ..  ]
+[; ;main.c: 138: printf("%x %x\r\n",msb,lsb);
 "138
-[e ( _Soft_I2C_Stop ..  ]
-[; ;main.c: 139: printf("%x %x\r\n",msb,lsb);
-"139
 [e ( _printf , , (. :s 3C -> _msb `i -> _lsb `i ]
-[; ;main.c: 140: process_data_opt(msb,lsb);
-"140
+[; ;main.c: 139: process_data_opt(msb,lsb);
+"139
 [e ( _process_data_opt (2 , _msb _lsb ]
+[; ;main.c: 141: _delay((unsigned long)((10)*(64000000/4000.0)));
+"141
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 [; ;main.c: 142: _delay((unsigned long)((10)*(64000000/4000.0)));
 "142
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
@@ -7896,124 +7902,121 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 240: _delay((unsigned long)((10)*(64000000/4000.0)));
 "240
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 241: _delay((unsigned long)((10)*(64000000/4000.0)));
-"241
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"244
+"243
 }
 [e :U 1120 ]
-"129
+"128
 [e $U 1121  ]
 [e :U 1122 ]
-[; ;main.c: 244: }
-[; ;main.c: 246: wait_5ms(5);
+[; ;main.c: 243: }
+[; ;main.c: 245: wait_5ms(5);
+"245
+[e ( _wait_5ms (1 -> 5 `i ]
+[; ;main.c: 246: printf("sys reset\r\n");
 "246
-[e ( _wait_5ms (1 -> 5 `i ]
-[; ;main.c: 247: printf("sys reset\r\n");
-"247
 [e ( _printf :s 4C ]
-[; ;main.c: 248: wait_5ms(5);
-"248
+[; ;main.c: 247: wait_5ms(5);
+"247
 [e ( _wait_5ms (1 -> 5 `i ]
-[; ;main.c: 249: printf("sys get ver\r\n");
-"249
+[; ;main.c: 248: printf("sys get ver\r\n");
+"248
 [e ( _printf :s 5C ]
-[; ;main.c: 250: read_line();
+[; ;main.c: 249: read_line();
+"249
+[e ( _read_line ..  ]
+[; ;main.c: 250: printf("radio get sf\r\n");
 "250
-[e ( _read_line ..  ]
-[; ;main.c: 251: printf("radio get sf\r\n");
-"251
 [e ( _printf :s 6C ]
-[; ;main.c: 252: read_line();
+[; ;main.c: 251: read_line();
+"251
+[e ( _read_line ..  ]
+[; ;main.c: 252: printf("radio get bw\r\n");
 "252
-[e ( _read_line ..  ]
-[; ;main.c: 253: printf("radio get bw\r\n");
-"253
 [e ( _printf :s 7C ]
-[; ;main.c: 254: read_line();
+[; ;main.c: 253: read_line();
+"253
+[e ( _read_line ..  ]
+[; ;main.c: 254: printf("radio get cr\r\n");
 "254
-[e ( _read_line ..  ]
-[; ;main.c: 255: printf("radio get cr\r\n");
-"255
 [e ( _printf :s 8C ]
-[; ;main.c: 256: read_line();
+[; ;main.c: 255: read_line();
+"255
+[e ( _read_line ..  ]
+[; ;main.c: 256: printf("radio get prlen\r\n");
 "256
-[e ( _read_line ..  ]
-[; ;main.c: 257: printf("radio get prlen\r\n");
-"257
 [e ( _printf :s 9C ]
-[; ;main.c: 258: read_line();
+[; ;main.c: 257: read_line();
+"257
+[e ( _read_line ..  ]
+[; ;main.c: 258: printf("radio get pwr\r\n");
 "258
-[e ( _read_line ..  ]
-[; ;main.c: 259: printf("radio get pwr\r\n");
-"259
 [e ( _printf :s 10C ]
-[; ;main.c: 260: read_line();
+[; ;main.c: 259: read_line();
+"259
+[e ( _read_line ..  ]
+[; ;main.c: 260: printf("mac pause\r\n");
 "260
-[e ( _read_line ..  ]
-[; ;main.c: 261: printf("mac pause\r\n");
-"261
 [e ( _printf :s 11C ]
-[; ;main.c: 262: read_line();
-"262
+[; ;main.c: 261: read_line();
+"261
 [e ( _read_line ..  ]
-[; ;main.c: 264: printf("radio set pwr -2\r\n");
-"264
+[; ;main.c: 263: printf("radio set pwr -2\r\n");
+"263
 [e ( _printf :s 12C ]
-[; ;main.c: 265: read_line();
+[; ;main.c: 264: read_line();
+"264
+[e ( _read_line ..  ]
+[; ;main.c: 265: printf("radio set bw 500\r\n");
 "265
-[e ( _read_line ..  ]
-[; ;main.c: 266: printf("radio set bw 500\r\n");
-"266
 [e ( _printf :s 13C ]
-[; ;main.c: 267: read_line();
+[; ;main.c: 266: read_line();
+"266
+[e ( _read_line ..  ]
+[; ;main.c: 267: printf("radio set sf sf7\r\n");
 "267
-[e ( _read_line ..  ]
-[; ;main.c: 268: printf("radio set sf sf7\r\n");
-"268
 [e ( _printf :s 14C ]
-[; ;main.c: 269: read_line();
+[; ;main.c: 268: read_line();
+"268
+[e ( _read_line ..  ]
+[; ;main.c: 269: printf("radio set cr 4/8\r\n");
 "269
-[e ( _read_line ..  ]
-[; ;main.c: 270: printf("radio set cr 4/8\r\n");
-"270
 [e ( _printf :s 15C ]
-[; ;main.c: 271: read_line();
+[; ;main.c: 270: read_line();
+"270
+[e ( _read_line ..  ]
+[; ;main.c: 271: printf("radio set crc on\r\n");
 "271
-[e ( _read_line ..  ]
-[; ;main.c: 272: printf("radio set crc on\r\n");
-"272
 [e ( _printf :s 16C ]
-[; ;main.c: 273: read_line();
-"273
+[; ;main.c: 272: read_line();
+"272
 [e ( _read_line ..  ]
-[; ;main.c: 275: getUUID();
-"275
+[; ;main.c: 274: getUUID();
+"274
 [e ( _getUUID ..  ]
-[; ;main.c: 277: srand((int)strtol(uuid, (0), 0));
-"277
+[; ;main.c: 276: srand((int)strtol(uuid, (0), 0));
+"276
 [e ( _srand (1 -> -> ( _strtol (3 , , -> &U _uuid `*Cuc -> -> 0 `i `**uc -> 0 `i `i `ui ]
-"278
+"277
 [v _delay `i ~T0 @X0 1 a ]
-[; ;main.c: 278: int delay = 2000+(rand()%1000);
+[; ;main.c: 277: int delay = 2000+(rand()%1000);
 [e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
-[; ;main.c: 279: printf("radio set wdt %d\r\n",delay);
-"279
+[; ;main.c: 278: printf("radio set wdt %d\r\n",delay);
+"278
 [e ( _printf , (. :s 17C _delay ]
-[; ;main.c: 280: read_line();
-"280
+[; ;main.c: 279: read_line();
+"279
 [e ( _read_line ..  ]
-[; ;main.c: 294: printf("sys sleep 100000\r\n");
-"294
+[; ;main.c: 293: printf("sys sleep 100000\r\n");
+"293
 [e ( _printf :s 18C ]
-[; ;main.c: 295: read_line();
-"295
+[; ;main.c: 294: read_line();
+"294
 [e ( _read_line ..  ]
-[; ;main.c: 299: return;
-"299
+[; ;main.c: 298: return;
+"298
 [e $UE 1119  ]
-[; ;main.c: 300: }
-"300
+[; ;main.c: 299: }
+"299
 [e :UE 1119 ]
 }
 [p f _printf 12583040 ]

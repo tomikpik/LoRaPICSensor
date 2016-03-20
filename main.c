@@ -114,28 +114,27 @@ void main(void) {
 	INTERRUPT_PeripheralInterruptEnable();
     ANSELCbits.ANSC4=0;
 
-
-    Soft_I2C_Init();
-
-    Soft_I2C_Start();
-    Soft_I2C_WriteByte(0x88);
-    Soft_I2C_WriteByte(0x01);
-    Soft_I2C_WriteByte(0xC4);
-    Soft_I2C_WriteByte(0x10);
-    Soft_I2C_Stop();
+    InitI2C();
+    
+    I2C_Start();
+    I2C_Write_Byte(0x88);
+    I2C_Write_Byte(0x01);
+    I2C_Write_Byte(0xC4);
+    I2C_Write_Byte(0x10);
+    I2C_Stop();
     
     __delay_ms(1); 
 
     while(1){
         
-        Soft_I2C_Start();
-        Soft_I2C_WriteByte(0x88);
-        Soft_I2C_WriteByte(0x7E);
-        Soft_I2C_Start();
-        Soft_I2C_WriteByte(0x89);
-        uint8_t msb = Soft_I2C_ReadByte(1);
-        uint8_t lsb = Soft_I2C_ReadByte(0);
-        Soft_I2C_Stop();
+        I2C_Start();
+        I2C_Write_Byte(0x88);
+        I2C_Write_Byte(0x7E);
+        I2C_Start();
+        I2C_Write_Byte(0x89);
+        uint8_t msb = I2C_Read_Byte();
+        uint8_t lsb = I2C_Read_Byte();
+        I2C_Stop();
         printf("%x %x\r\n",msb,lsb);
         process_data_opt(msb,lsb);
         
