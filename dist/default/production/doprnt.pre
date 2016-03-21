@@ -279,7 +279,11 @@ va_list ap;
 # 499
 signed char c;
 
-# 506
+int width;
+
+
+
+
 signed char prec;
 
 unsigned char flag;
@@ -307,8 +311,34 @@ if(c != '%')
 continue;
 }
 
-# 548
+
+width = 0;
+
 flag = 0;
+
+for(;;) {
+switch(*f) {
+
+# 579
+case '0':
+flag |= 0x04;
+f++;
+continue;
+
+}
+break;
+}
+
+# 597
+if(isdigit((unsigned)*f)) {
+width = 0;
+do {
+width *= 10;
+width += *f++ - '0';
+} while(isdigit((unsigned)*f));
+
+# 608
+}
 
 # 635
 switch(c = *f++) {
@@ -321,6 +351,9 @@ case 'd':
 case 'i':
 break;
 
+# 712
+case 'X':
+
 # 718
 case 'x':
 
@@ -328,6 +361,40 @@ case 'x':
 flag |= 0x80;
 
 break;
+
+
+
+
+case 's':
+
+# 734
+cp = (*(const char * *)__va_arg((*(const char * **)ap), (const char *)0));
+
+# 740
+if(!cp)
+cp = "(null)";
+
+
+
+len = 0;
+while(cp[len])
+len++;
+
+# 757
+if(width > len)
+width -= len;
+else
+width = 0;
+
+# 764
+while(width--)
+(putch(' ') );
+
+while(len--)
+(putch(*cp++) );
+
+# 774
+continue;
 
 # 802
 default:
@@ -393,8 +460,42 @@ break;
 # 1336
 }
 
-# 1422
+# 1345
+if(width && flag & 0x03)
+width--;
+
+# 1381
+if(width > c)
+width -= c;
+else
+width = 0;
+
+
+if(flag & 0x04) {
+
+
+
+
+if(flag & 0x03)
+(putch('-') );
+
+# 1415
+if(width)
+do
+(putch('0') );
+while(--width);
+
+} else
+
 {
+
+if(width
+
+# 1428
+)
+do
+(putch(' ') );
+while(--width);
 
 # 1438
 if(flag & 0x03)
@@ -428,9 +529,11 @@ case 0x80:
 {
 unsigned char idx = (val / hexpowers[prec]) & 0xF;
 
-# 1506
-c = "0123456789abcdef"[idx];
 
+
+c = "0123456789ABCDEF"[idx];
+
+# 1508
 }
 
 break;

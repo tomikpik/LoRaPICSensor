@@ -1,17 +1,13 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"19060 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f26k22.h
-[v _TRISC4 `Vb ~T0 @X0 0 e@31908 ]
-"19058
-[v _TRISC3 `Vb ~T0 @X0 0 e@31907 ]
-"17992
+"17992 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f26k22.h
 [v _LATC4 `Vb ~T0 @X0 0 e@31836 ]
+"19060
+[v _TRISC4 `Vb ~T0 @X0 0 e@31908 ]
 "17990
 [v _LATC3 `Vb ~T0 @X0 0 e@31835 ]
-[v F7357 `(v ~T0 @X0 1 tf1`ul ]
-"156 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18.h
-[v __delay `JF7357 ~T0 @X0 0 e ]
-[p i __delay ]
-"6936 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f26k22.h
+"19058
+[v _TRISC3 `Vb ~T0 @X0 0 e@31907 ]
+"6936
 [s S423 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S423 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
 "6946
@@ -46,6 +42,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S422 . . . . . . . . . . . ]
 "7014
 [v _PORTCbits `VS422 ~T0 @X0 0 e@3970 ]
+[v F7357 `(v ~T0 @X0 1 tf1`ul ]
+"156 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18.h
+[v __delay `JF7357 ~T0 @X0 0 e ]
+[p i __delay ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7071,422 +7071,505 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 156: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 158: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 160: extern __nonreentrant void _delay3(unsigned char);
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;soft_i2c.h: 28: void I2C_Init(void);
-[; ;soft_i2c.h: 29: void I2C_Start(void);
-[; ;soft_i2c.h: 30: void I2C_ReStart(void);
-[; ;soft_i2c.h: 31: void I2C_Stop(void);
-[; ;soft_i2c.h: 32: void I2C_Send_ACK(void);
-[; ;soft_i2c.h: 33: void I2C_Send_NACK(void);
-[; ;soft_i2c.h: 34: bit I2C_Write_Byte(unsigned char);
-[; ;soft_i2c.h: 35: unsigned char I2C_Read_Byte(void);
-"12 soft_i2c.c
-[v _I2C_Init `(v ~T0 @X0 1 ef ]
-"13
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stdarg.h: 7: typedef void * va_list[1];
+[; ;stdarg.h: 10: extern void * __va_start(void);
+[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 43: struct __prbuf
+[; ;stdio.h: 44: {
+[; ;stdio.h: 45: char * ptr;
+[; ;stdio.h: 46: void (* func)(char);
+[; ;stdio.h: 47: };
+[; ;errno.h: 29: extern int errno;
+[; ;conio.h: 12: extern void init_uart(void);
+[; ;conio.h: 14: extern char getch(void);
+[; ;conio.h: 15: extern char getche(void);
+[; ;conio.h: 16: extern void putch(char);
+[; ;conio.h: 17: extern void ungetch(char);
+[; ;conio.h: 19: extern __bit kbhit(void);
+[; ;conio.h: 23: extern char * cgets(char *);
+[; ;conio.h: 24: extern void cputs(const char *);
+[; ;stdio.h: 88: extern int cprintf(char *, ...);
+[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 183: extern char * gets(char *);
+[; ;stdio.h: 184: extern int puts(const char *);
+[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;stdlib.h: 7: typedef unsigned short wchar_t;
+[; ;stdlib.h: 15: typedef struct {
+[; ;stdlib.h: 16: int rem;
+[; ;stdlib.h: 17: int quot;
+[; ;stdlib.h: 18: } div_t;
+[; ;stdlib.h: 19: typedef struct {
+[; ;stdlib.h: 20: unsigned rem;
+[; ;stdlib.h: 21: unsigned quot;
+[; ;stdlib.h: 22: } udiv_t;
+[; ;stdlib.h: 23: typedef struct {
+[; ;stdlib.h: 24: long quot;
+[; ;stdlib.h: 25: long rem;
+[; ;stdlib.h: 26: } ldiv_t;
+[; ;stdlib.h: 27: typedef struct {
+[; ;stdlib.h: 28: unsigned long quot;
+[; ;stdlib.h: 29: unsigned long rem;
+[; ;stdlib.h: 30: } uldiv_t;
+[; ;stdlib.h: 53: extern double atof(const char *);
+[; ;stdlib.h: 54: extern double strtod(const char *, const char **);
+[; ;stdlib.h: 55: extern int atoi(const char *);
+[; ;stdlib.h: 56: extern unsigned xtoi(const char *);
+[; ;stdlib.h: 57: extern long atol(const char *);
+[; ;stdlib.h: 58: extern long strtol(const char *, char **, int);
+[; ;stdlib.h: 60: extern int rand(void);
+[; ;stdlib.h: 61: extern void srand(unsigned int);
+[; ;stdlib.h: 62: extern void * calloc(size_t, size_t);
+[; ;stdlib.h: 63: extern div_t div(int numer, int denom);
+[; ;stdlib.h: 64: extern udiv_t udiv(unsigned numer, unsigned denom);
+[; ;stdlib.h: 65: extern ldiv_t ldiv(long numer, long denom);
+[; ;stdlib.h: 66: extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
+[; ;stdlib.h: 67: extern unsigned long _lrotl(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 68: extern unsigned long _lrotr(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 69: extern unsigned int _rotl(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 70: extern unsigned int _rotr(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 75: extern void * malloc(size_t);
+[; ;stdlib.h: 76: extern void free(void *);
+[; ;stdlib.h: 77: extern void * realloc(void *, size_t);
+[; ;stdlib.h: 86: extern int atexit(void (*)(void));
+[; ;stdlib.h: 87: extern char * getenv(const char *);
+[; ;stdlib.h: 88: extern char ** environ;
+[; ;stdlib.h: 89: extern int system(char *);
+[; ;stdlib.h: 90: extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
+[; ;stdlib.h: 91: extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
+[; ;stdlib.h: 92: extern int abs(int);
+[; ;stdlib.h: 93: extern long labs(long);
+[; ;stdlib.h: 95: extern char * itoa(char * buf, int val, int base);
+[; ;stdlib.h: 96: extern char * utoa(char * buf, unsigned val, int base);
+[; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
+[; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
+[; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
+[; ;soft_i2c.h: 6: void I2C_Init();
+[; ;soft_i2c.h: 7: void I2C_Start();
+[; ;soft_i2c.h: 8: void I2C_Stop();
+[; ;soft_i2c.h: 9: void I2C_Write_Byte(char byt);
+[; ;soft_i2c.h: 10: char I2C_Read_Byte(char ack);
+"11 soft_i2c.c
+[v _I2C_SDA_SET `(v ~T0 @X0 1 ef ]
 {
-[; ;soft_i2c.c: 12: void I2C_Init(void)
-[; ;soft_i2c.c: 13: {
-[e :U _I2C_Init ]
+[; ;soft_i2c.c: 11: void I2C_SDA_SET() { LATC4 = 1; }
+[e :U _I2C_SDA_SET ]
 [f ]
-[; ;soft_i2c.c: 15: TRISC4 = 1;
-"15
-[e = _TRISC4 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 16: TRISC3 = 1;
-"16
-[e = _TRISC3 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 19: LATC4 = 0;
-"19
-[e = _LATC4 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 20: LATC3 = 0;
-"20
-[e = _LATC3 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 21: }
-"21
-[e :UE 1084 ]
-}
-"25
-[v _I2C_Start `(v ~T0 @X0 1 ef ]
-"26
-{
-[; ;soft_i2c.c: 25: void I2C_Start(void)
-[; ;soft_i2c.c: 26: {
-[e :U _I2C_Start ]
-[f ]
-[; ;soft_i2c.c: 27: LATC4 = 0;
-"27
-[e = _LATC4 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 28: LATC3 = 0;
-"28
-[e = _LATC3 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 30: TRISC3 = 1;
-"30
-[e = _TRISC3 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 31: TRISC4 = 1;
-"31
-[e = _TRISC4 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 32: _delay((unsigned long)((50000)*(64000000/4000000.0)));
-"32
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 33: TRISC4 = 0;
-"33
-[e = _TRISC4 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 34: _delay((unsigned long)((50000)*(64000000/4000000.0)));
-"34
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 35: }
-"35
-[e :UE 1085 ]
-}
-"39
-[v _I2C_ReStart `(v ~T0 @X0 1 ef ]
-"40
-{
-[; ;soft_i2c.c: 39: void I2C_ReStart(void)
-[; ;soft_i2c.c: 40: {
-[e :U _I2C_ReStart ]
-[f ]
-[; ;soft_i2c.c: 41: TRISC3 = 0;
-"41
-[e = _TRISC3 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 43: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"43
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 45: TRISC4 = 1;
-"45
-[e = _TRISC4 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 47: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"47
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 48: TRISC3 = 1;
-"48
-[e = _TRISC3 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 49: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"49
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 50: TRISC4 = 0;
-"50
-[e = _TRISC4 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 51: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"51
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 52: }
-"52
-[e :UE 1086 ]
-}
-"56
-[v _I2C_Stop `(v ~T0 @X0 1 ef ]
-"57
-{
-[; ;soft_i2c.c: 56: void I2C_Stop(void)
-[; ;soft_i2c.c: 57: {
-[e :U _I2C_Stop ]
-[f ]
-[; ;soft_i2c.c: 58: TRISC3 = 0;
-"58
-[e = _TRISC3 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 60: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"60
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 62: TRISC4 = 0;
-"62
-[e = _TRISC4 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 64: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"64
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 65: TRISC3 = 1;
-"65
-[e = _TRISC3 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 66: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"66
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 67: TRISC4 = 1;
-"67
-[e = _TRISC4 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 68: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"68
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 69: }
-"69
-[e :UE 1087 ]
-}
-"74
-[v _I2C_Send_ACK `(v ~T0 @X0 1 ef ]
-"75
-{
-[; ;soft_i2c.c: 74: void I2C_Send_ACK(void)
-[; ;soft_i2c.c: 75: {
-[e :U _I2C_Send_ACK ]
-[f ]
-[; ;soft_i2c.c: 76: TRISC3 = 0;
-"76
-[e = _TRISC3 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 77: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"77
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 79: TRISC4 = 0;
-"79
-[e = _TRISC4 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 80: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"80
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 81: TRISC3 = 1;
-"81
-[e = _TRISC3 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 82: _delay((unsigned long)((50000)*(64000000/4000000.0)));
-"82
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 83: }
-"83
-[e :UE 1088 ]
-}
-"87
-[v _I2C_Send_NACK `(v ~T0 @X0 1 ef ]
-"88
-{
-[; ;soft_i2c.c: 87: void I2C_Send_NACK(void)
-[; ;soft_i2c.c: 88: {
-[e :U _I2C_Send_NACK ]
-[f ]
-[; ;soft_i2c.c: 89: TRISC3 = 0;
-"89
-[e = _TRISC3 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 90: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"90
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 92: TRISC4 = 1;
-"92
-[e = _TRISC4 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 93: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"93
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 94: TRISC3 = 1;
-"94
-[e = _TRISC3 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 95: _delay((unsigned long)((50000)*(64000000/4000000.0)));
-"95
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 96: }
-"96
+[e = _LATC4 -> -> 1 `i `b ]
 [e :UE 1089 ]
 }
-"100
-[v _I2C_Write_Byte `(b ~T0 @X0 1 ef1`uc ]
-"101
+"12
+[v _I2C_SDA_CLEAR `(v ~T0 @X0 1 ef ]
 {
-[; ;soft_i2c.c: 100: bit I2C_Write_Byte(unsigned char Byte)
-[; ;soft_i2c.c: 101: {
-[e :U _I2C_Write_Byte ]
-"100
-[v _Byte `uc ~T0 @X0 1 r1 ]
-"101
+[; ;soft_i2c.c: 12: void I2C_SDA_CLEAR() { LATC4 = 0; }
+[e :U _I2C_SDA_CLEAR ]
 [f ]
-"102
-[v _i `uc ~T0 @X0 1 a ]
-[; ;soft_i2c.c: 102: unsigned char i;
-[; ;soft_i2c.c: 104: for(i=0;i<8;i++)
-"104
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 1091  ]
-[e $U 1092  ]
-"105
-[e :U 1091 ]
-[; ;soft_i2c.c: 105: {
-{
-[; ;soft_i2c.c: 106: TRISC3 = 0;
-"106
-[e = _TRISC3 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 108: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"108
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 111: if((Byte<<i)&0x80)
-"111
-[e $ ! != & << -> _Byte `i _i -> 128 `i -> 0 `i 1094  ]
-[; ;soft_i2c.c: 112: TRISC4 = 1;
-"112
-[e = _TRISC4 -> -> 1 `i `b ]
-[e $U 1095  ]
-"113
-[e :U 1094 ]
-[; ;soft_i2c.c: 113: else
-[; ;soft_i2c.c: 114: TRISC4 = 0;
-"114
-[e = _TRISC4 -> -> 0 `i `b ]
-[e :U 1095 ]
-[; ;soft_i2c.c: 116: _delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"116
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 117: TRISC3 = 1;
-"117
-[e = _TRISC3 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 118: _delay((unsigned long)((50000)*(64000000/4000000.0)));
-"118
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-"119
-}
-"104
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 1091  ]
-[e :U 1092 ]
-"119
-}
-[; ;soft_i2c.c: 119: }
-[; ;soft_i2c.c: 122: TRISC3 = 0;
-"122
-[e = _TRISC3 -> -> 0 `i `b ]
-[; ;soft_i2c.c: 123: TRISC4 = 1;
-"123
-[e = _TRISC4 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 124: _delay((unsigned long)((50000)*(64000000/4000000.0)));
-"124
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 125: TRISC3 = 1;
-"125
-[e = _TRISC3 -> -> 1 `i `b ]
-[; ;soft_i2c.c: 126: _delay((unsigned long)((50000)*(64000000/4000000.0)));
-"126
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 128: return LATC4;
-"128
-[e ) -> -> _LATC4 `i `b ]
-[e $UE 1090  ]
-[; ;soft_i2c.c: 129: }
-"129
+[e = _LATC4 -> -> 0 `i `b ]
 [e :UE 1090 ]
 }
+"14
+[v _I2C_SDA_IN_SET `(v ~T0 @X0 1 ef ]
+{
+[; ;soft_i2c.c: 14: void I2C_SDA_IN_SET() { TRISC4 = 1; }
+[e :U _I2C_SDA_IN_SET ]
+[f ]
+[e = _TRISC4 -> -> 1 `i `b ]
+[e :UE 1091 ]
+}
+"15
+[v _I2C_SDA_OUT_SET `(v ~T0 @X0 1 ef ]
+{
+[; ;soft_i2c.c: 15: void I2C_SDA_OUT_SET() { TRISC4 = 0; }
+[e :U _I2C_SDA_OUT_SET ]
+[f ]
+[e = _TRISC4 -> -> 0 `i `b ]
+[e :UE 1092 ]
+}
+"17
+[v _I2C_SCL_SET `(v ~T0 @X0 1 ef ]
+{
+[; ;soft_i2c.c: 17: void I2C_SCL_SET() { LATC3 = 1; }
+[e :U _I2C_SCL_SET ]
+[f ]
+[e = _LATC3 -> -> 1 `i `b ]
+[e :UE 1093 ]
+}
+"18
+[v _I2C_SCL_CLEAR `(v ~T0 @X0 1 ef ]
+{
+[; ;soft_i2c.c: 18: void I2C_SCL_CLEAR() { LATC3 = 0; }
+[e :U _I2C_SCL_CLEAR ]
+[f ]
+[e = _LATC3 -> -> 0 `i `b ]
+[e :UE 1094 ]
+}
+"20
+[v _I2C_SCL_OUT_SET `(v ~T0 @X0 1 ef ]
+{
+[; ;soft_i2c.c: 20: void I2C_SCL_OUT_SET() { TRISC3 = 0; }
+[e :U _I2C_SCL_OUT_SET ]
+[f ]
+[e = _TRISC3 -> -> 0 `i `b ]
+[e :UE 1095 ]
+}
+"22
+[v _I2C_SDA_READ `(uc ~T0 @X0 1 ef ]
+{
+[; ;soft_i2c.c: 22: char I2C_SDA_READ() { return PORTCbits.RC4; }
+[e :U _I2C_SDA_READ ]
+[f ]
+[e ) . . _PORTCbits 0 4 ]
+[e $UE 1096  ]
+[e :UE 1096 ]
+}
+"25
+[v _I2C_Init `(v ~T0 @X0 1 ef ]
+"26
+{
+[; ;soft_i2c.c: 25: void I2C_Init()
+[; ;soft_i2c.c: 26: {
+[e :U _I2C_Init ]
+[f ]
+[; ;soft_i2c.c: 27: I2C_SDA_OUT_SET();
+"27
+[e ( _I2C_SDA_OUT_SET ..  ]
+[; ;soft_i2c.c: 28: I2C_SCL_OUT_SET();
+"28
+[e ( _I2C_SCL_OUT_SET ..  ]
+[; ;soft_i2c.c: 29: I2C_SCL_SET();
+"29
+[e ( _I2C_SCL_SET ..  ]
+[; ;soft_i2c.c: 30: I2C_SDA_SET();
+"30
+[e ( _I2C_SDA_SET ..  ]
+[; ;soft_i2c.c: 31: _delay((unsigned long)((10)*(64000000/4000.0)));
+"31
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;soft_i2c.c: 32: }
+"32
+[e :UE 1097 ]
+}
+"34
+[v _I2C_Start `(v ~T0 @X0 1 ef ]
+"35
+{
+[; ;soft_i2c.c: 34: void I2C_Start()
+[; ;soft_i2c.c: 35: {
+[e :U _I2C_Start ]
+[f ]
+[; ;soft_i2c.c: 36: I2C_SDA_OUT_SET();
+"36
+[e ( _I2C_SDA_OUT_SET ..  ]
+[; ;soft_i2c.c: 39: I2C_SDA_SET();
+"39
+[e ( _I2C_SDA_SET ..  ]
+[; ;soft_i2c.c: 40: I2C_SCL_SET();
+"40
+[e ( _I2C_SCL_SET ..  ]
+[; ;soft_i2c.c: 41: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"41
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 44: I2C_SDA_CLEAR();
+"44
+[e ( _I2C_SDA_CLEAR ..  ]
+[; ;soft_i2c.c: 45: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"45
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 46: I2C_SCL_CLEAR();
+"46
+[e ( _I2C_SCL_CLEAR ..  ]
+[; ;soft_i2c.c: 47: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"47
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 48: }
+"48
+[e :UE 1098 ]
+}
+"50
+[v _I2C_Stop `(v ~T0 @X0 1 ef ]
+"51
+{
+[; ;soft_i2c.c: 50: void I2C_Stop()
+[; ;soft_i2c.c: 51: {
+[e :U _I2C_Stop ]
+[f ]
+[; ;soft_i2c.c: 52: I2C_SDA_OUT_SET();
+"52
+[e ( _I2C_SDA_OUT_SET ..  ]
+[; ;soft_i2c.c: 55: I2C_SCL_SET();
+"55
+[e ( _I2C_SCL_SET ..  ]
+[; ;soft_i2c.c: 56: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"56
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 57: I2C_SDA_SET();
+"57
+[e ( _I2C_SDA_SET ..  ]
+[; ;soft_i2c.c: 58: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"58
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 59: }
+"59
+[e :UE 1099 ]
+}
+"61
+[v _I2C_Write_Byte `(v ~T0 @X0 1 ef1`uc ]
+"62
+{
+[; ;soft_i2c.c: 61: void I2C_Write_Byte(char byt)
+[; ;soft_i2c.c: 62: {
+[e :U _I2C_Write_Byte ]
+"61
+[v _byt `uc ~T0 @X0 1 r1 ]
+"62
+[f ]
+"63
+[v _i `uc ~T0 @X0 1 a ]
+[; ;soft_i2c.c: 63: char i;
+[; ;soft_i2c.c: 64: I2C_SDA_OUT_SET();
+"64
+[e ( _I2C_SDA_OUT_SET ..  ]
+[; ;soft_i2c.c: 66: for(i=0;i<8;i++)
+"66
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 1101  ]
+[e $U 1102  ]
+"67
+[e :U 1101 ]
+[; ;soft_i2c.c: 67: {
+{
+[; ;soft_i2c.c: 68: if(byt & 0x80)
+"68
+[e $ ! != & -> _byt `i -> 128 `i -> 0 `i 1104  ]
+[; ;soft_i2c.c: 69: {
+"69
+{
+[; ;soft_i2c.c: 70: I2C_SDA_SET();
+"70
+[e ( _I2C_SDA_SET ..  ]
+[; ;soft_i2c.c: 71: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"71
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+"72
+}
+[; ;soft_i2c.c: 72: }
+[e $U 1105  ]
+"73
+[e :U 1104 ]
+[; ;soft_i2c.c: 73: else
+[; ;soft_i2c.c: 74: {
+"74
+{
+[; ;soft_i2c.c: 75: I2C_SDA_CLEAR();
+"75
+[e ( _I2C_SDA_CLEAR ..  ]
+[; ;soft_i2c.c: 76: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"76
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+"77
+}
+[e :U 1105 ]
+[; ;soft_i2c.c: 77: }
+[; ;soft_i2c.c: 79: I2C_SCL_SET();
+"79
+[e ( _I2C_SCL_SET ..  ]
+[; ;soft_i2c.c: 80: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"80
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 81: I2C_SCL_CLEAR();
+"81
+[e ( _I2C_SCL_CLEAR ..  ]
+[; ;soft_i2c.c: 82: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"82
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 83: byt<<=1;
+"83
+[e =<< _byt -> 1 `i ]
+"84
+}
+"66
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 1101  ]
+[e :U 1102 ]
+"84
+}
+[; ;soft_i2c.c: 84: }
+[; ;soft_i2c.c: 85: I2C_SDA_IN_SET();
+"85
+[e ( _I2C_SDA_IN_SET ..  ]
+[; ;soft_i2c.c: 86: I2C_SCL_SET();
+"86
+[e ( _I2C_SCL_SET ..  ]
+[; ;soft_i2c.c: 87: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"87
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 88: I2C_SCL_CLEAR();
+"88
+[e ( _I2C_SCL_CLEAR ..  ]
+[; ;soft_i2c.c: 89: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"89
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 91: I2C_SDA_OUT_SET();
+"91
+[e ( _I2C_SDA_OUT_SET ..  ]
+[; ;soft_i2c.c: 94: }
+"94
+[e :UE 1100 ]
+}
+"96
+[v _I2C_Read_Byte `(uc ~T0 @X0 1 ef1`uc ]
+"97
+{
+[; ;soft_i2c.c: 96: char I2C_Read_Byte(char ack)
+[; ;soft_i2c.c: 97: {
+[e :U _I2C_Read_Byte ]
+"96
+[v _ack `uc ~T0 @X0 1 r1 ]
+"97
+[f ]
+"98
+[v _i `uc ~T0 @X0 1 a ]
+"99
+[v _val `uc ~T0 @X0 1 a ]
+[; ;soft_i2c.c: 98: char i;
+[; ;soft_i2c.c: 99: char val = 0;
+[e = _val -> -> 0 `i `uc ]
+[; ;soft_i2c.c: 100: I2C_SDA_IN_SET();
+"100
+[e ( _I2C_SDA_IN_SET ..  ]
+[; ;soft_i2c.c: 103: for(i=0;i<8;i++)
+"103
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 1107  ]
+[e $U 1108  ]
+"104
+[e :U 1107 ]
+[; ;soft_i2c.c: 104: {
+{
+[; ;soft_i2c.c: 105: if(i!=0) { val<<=1; }
+"105
+[e $ ! != -> _i `i -> 0 `i 1110  ]
+{
+[e =<< _val -> 1 `i ]
+}
+[e :U 1110 ]
+[; ;soft_i2c.c: 106: I2C_SCL_SET();
+"106
+[e ( _I2C_SCL_SET ..  ]
+[; ;soft_i2c.c: 107: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"107
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 108: if(I2C_SDA_READ()!=0)
+"108
+[e $ ! != -> ( _I2C_SDA_READ ..  `i -> 0 `i 1111  ]
+[; ;soft_i2c.c: 109: {
+"109
+{
+[; ;soft_i2c.c: 110: val |= 0x01;
+"110
+[e =| _val -> -> 1 `i `uc ]
+"111
+}
+[; ;soft_i2c.c: 111: }
+[e $U 1112  ]
+"112
+[e :U 1111 ]
+[; ;soft_i2c.c: 112: else
+[; ;soft_i2c.c: 113: {
+"113
+{
+[; ;soft_i2c.c: 114: val &= 0xFE;
+"114
+[e =& _val -> -> 254 `i `uc ]
+"116
+}
+[e :U 1112 ]
+[; ;soft_i2c.c: 116: }
+[; ;soft_i2c.c: 117: _delay((unsigned long)((10)*(64000000/4000000.0)));
+"117
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 118: I2C_SCL_CLEAR();
+"118
+[e ( _I2C_SCL_CLEAR ..  ]
+[; ;soft_i2c.c: 119: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"119
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+"120
+}
+"103
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 1107  ]
+[e :U 1108 ]
+"120
+}
+[; ;soft_i2c.c: 120: }
+[; ;soft_i2c.c: 122: I2C_SDA_OUT_SET();
+"122
+[e ( _I2C_SDA_OUT_SET ..  ]
+[; ;soft_i2c.c: 125: if(ack)
+"125
+[e $ ! != -> _ack `i -> -> -> 0 `i `uc `i 1113  ]
+[; ;soft_i2c.c: 126: {
+"126
+{
+[; ;soft_i2c.c: 127: I2C_SDA_CLEAR();
+"127
+[e ( _I2C_SDA_CLEAR ..  ]
+[; ;soft_i2c.c: 128: I2C_SCL_SET();
+"128
+[e ( _I2C_SCL_SET ..  ]
+[; ;soft_i2c.c: 129: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"129
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 130: I2C_SCL_CLEAR();
+"130
+[e ( _I2C_SCL_CLEAR ..  ]
+[; ;soft_i2c.c: 131: _delay((unsigned long)((20)*(64000000/4000000.0)));
+"131
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+"132
+}
+[; ;soft_i2c.c: 132: }
+[e $U 1114  ]
 "133
-[v _I2C_Read_Byte `(uc ~T0 @X0 1 ef ]
+[e :U 1113 ]
+[; ;soft_i2c.c: 133: else
+[; ;soft_i2c.c: 134: {
 "134
 {
-[; ;soft_i2c.c: 133: unsigned char I2C_Read_Byte(void)
-[; ;soft_i2c.c: 134: {
-[e :U _I2C_Read_Byte ]
-[f ]
+[; ;soft_i2c.c: 135: I2C_SDA_SET();
 "135
-[v _i `uc ~T0 @X0 1 a ]
-[v _RxData `uc ~T0 @X0 1 a ]
-[; ;soft_i2c.c: 135: unsigned char i, RxData = 0;
-[e = _RxData -> -> 0 `i `uc ]
-[; ;soft_i2c.c: 137: TRISC3 = 0; TRISC4 = 1; _delay((unsigned long)((50000)*(64000000/4000000.0))); TRISC3 = 1;_delay((unsigned long)((50000/2)*(64000000/4000000.0)));
+[e ( _I2C_SDA_SET ..  ]
+[; ;soft_i2c.c: 136: I2C_SCL_SET();
+"136
+[e ( _I2C_SCL_SET ..  ]
+[; ;soft_i2c.c: 137: _delay((unsigned long)((20)*(64000000/4000000.0)));
 "137
-[e = _TRISC3 -> -> 0 `i `b ]
-[e = _TRISC4 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[e = _TRISC3 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 138: RxData |= PORTCbits.RC4; RxData = RxData<<1;
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;soft_i2c.c: 138: I2C_SCL_CLEAR();
 "138
-[e =| _RxData . . _PORTCbits 0 4 ]
-[e = _RxData -> << -> _RxData `i -> 1 `i `uc ]
-[; ;soft_i2c.c: 139: TRISC3 = 0; TRISC4 = 1; _delay((unsigned long)((50000)*(64000000/4000000.0))); TRISC3 = 1;_delay((unsigned long)((50000/2)*(64000000/4000000.0)));
+[e ( _I2C_SCL_CLEAR ..  ]
+[; ;soft_i2c.c: 139: _delay((unsigned long)((20)*(64000000/4000000.0)));
 "139
-[e = _TRISC3 -> -> 0 `i `b ]
-[e = _TRISC4 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[e = _TRISC3 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 140: RxData |= PORTCbits.RC4; RxData = RxData<<1;
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
 "140
-[e =| _RxData . . _PORTCbits 0 4 ]
-[e = _RxData -> << -> _RxData `i -> 1 `i `uc ]
-[; ;soft_i2c.c: 141: TRISC3 = 0; TRISC4 = 1; _delay((unsigned long)((50000)*(64000000/4000000.0))); TRISC3 = 1;_delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"141
-[e = _TRISC3 -> -> 0 `i `b ]
-[e = _TRISC4 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[e = _TRISC3 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 142: RxData |= PORTCbits.RC4; RxData = RxData<<1;
+}
+[e :U 1114 ]
+[; ;soft_i2c.c: 140: }
+[; ;soft_i2c.c: 142: return val;
 "142
-[e =| _RxData . . _PORTCbits 0 4 ]
-[e = _RxData -> << -> _RxData `i -> 1 `i `uc ]
-[; ;soft_i2c.c: 143: TRISC3 = 0; TRISC4 = 1; _delay((unsigned long)((50000)*(64000000/4000000.0))); TRISC3 = 1;_delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"143
-[e = _TRISC3 -> -> 0 `i `b ]
-[e = _TRISC4 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[e = _TRISC3 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 144: RxData |= PORTCbits.RC4; RxData = RxData<<1;
+[e ) _val ]
+[e $UE 1106  ]
+[; ;soft_i2c.c: 144: }
 "144
-[e =| _RxData . . _PORTCbits 0 4 ]
-[e = _RxData -> << -> _RxData `i -> 1 `i `uc ]
-[; ;soft_i2c.c: 145: TRISC3 = 0; TRISC4 = 1; _delay((unsigned long)((50000)*(64000000/4000000.0))); TRISC3 = 1;_delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"145
-[e = _TRISC3 -> -> 0 `i `b ]
-[e = _TRISC4 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[e = _TRISC3 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 146: RxData |= PORTCbits.RC4; RxData = RxData<<1;
-"146
-[e =| _RxData . . _PORTCbits 0 4 ]
-[e = _RxData -> << -> _RxData `i -> 1 `i `uc ]
-[; ;soft_i2c.c: 147: TRISC3 = 0; TRISC4 = 1; _delay((unsigned long)((50000)*(64000000/4000000.0))); TRISC3 = 1;_delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"147
-[e = _TRISC3 -> -> 0 `i `b ]
-[e = _TRISC4 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[e = _TRISC3 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 148: RxData |= PORTCbits.RC4; RxData = RxData<<1;
-"148
-[e =| _RxData . . _PORTCbits 0 4 ]
-[e = _RxData -> << -> _RxData `i -> 1 `i `uc ]
-[; ;soft_i2c.c: 149: TRISC3 = 0; TRISC4 = 1; _delay((unsigned long)((50000)*(64000000/4000000.0))); TRISC3 = 1;_delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"149
-[e = _TRISC3 -> -> 0 `i `b ]
-[e = _TRISC4 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[e = _TRISC3 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 150: RxData |= PORTCbits.RC4; RxData = RxData<<1;
-"150
-[e =| _RxData . . _PORTCbits 0 4 ]
-[e = _RxData -> << -> _RxData `i -> 1 `i `uc ]
-[; ;soft_i2c.c: 151: TRISC3 = 0; TRISC4 = 1; _delay((unsigned long)((50000)*(64000000/4000000.0))); TRISC3 = 1;_delay((unsigned long)((50000/2)*(64000000/4000000.0)));
-"151
-[e = _TRISC3 -> -> 0 `i `b ]
-[e = _TRISC4 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> -> 50000 `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[e = _TRISC3 -> -> 1 `i `b ]
-[e ( __delay (1 -> * -> / -> 50000 `l -> -> 2 `i `l `d / -> -> 64000000 `l `d .4000000.0 `ul ]
-[; ;soft_i2c.c: 152: RxData |= PORTCbits.RC4;
-"152
-[e =| _RxData . . _PORTCbits 0 4 ]
-[; ;soft_i2c.c: 154: return RxData;
-"154
-[e ) _RxData ]
-[e $UE 1096  ]
-[; ;soft_i2c.c: 155: }
-"155
-[e :UE 1096 ]
+[e :UE 1106 ]
 }

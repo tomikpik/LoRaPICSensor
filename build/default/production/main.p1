@@ -13,8 +13,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
 "82 mcc_generated_files/eusart1.h
 [v _line `Vuc ~T0 @X0 -> 0 `x e ]
+"61 C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdlib.h
+[v _srand `(v ~T0 @X0 0 ef1`ui ]
+"58
+[v _strtol `(l ~T0 @X0 0 ef3`*Cuc`**uc`i ]
+"60
+[v _rand `(i ~T0 @X0 0 ef ]
+"148 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f26k22.h
+[s S6 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S6 . . ANSC2 ANSC3 ANSC4 ANSC5 ANSC6 ANSC7 ]
+"147
+[u S5 `S6 1 ]
+[n S5 . . ]
+"158
+[v _ANSELCbits `VS5 ~T0 @X0 0 e@3898 ]
+"6 soft_i2c.h
+[v _I2C_Init `(v ~T0 @X0 0 ef ]
+"7
+[v _I2C_Start `(v ~T0 @X0 0 ef ]
+"9
+[v _I2C_Write_Byte `(v ~T0 @X0 0 ef1`uc ]
+"8
+[v _I2C_Stop `(v ~T0 @X0 0 ef ]
 [p mainexit ]
-"112 main.c
+"106 main.c
 [v _SYSTEM_Initialize `(i ~T0 @X0 0 ef ]
 "16653 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f26k22.h
 [s S1056 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -30,24 +52,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1055 . . . . ]
 "16679
 [v _INTCONbits `VS1055 ~T0 @X0 0 e@4082 ]
-"148
-[s S6 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S6 . . ANSC2 ANSC3 ANSC4 ANSC5 ANSC6 ANSC7 ]
-"147
-[u S5 `S6 1 ]
-[n S5 . . ]
-"158
-[v _ANSELCbits `VS5 ~T0 @X0 0 e@3898 ]
-"28 soft_i2c.h
-[v _I2C_Init `(v ~T0 @X0 0 ef ]
-"31
-[v _I2C_Stop `(v ~T0 @X0 0 ef ]
-"29
-[v _I2C_Start `(v ~T0 @X0 0 ef ]
-"34
-[v _I2C_Write_Byte `(b ~T0 @X0 0 ef1`uc ]
-"35
-[v _I2C_Read_Byte `(uc ~T0 @X0 0 ef ]
+"10 soft_i2c.h
+[v _I2C_Read_Byte `(uc ~T0 @X0 0 ef1`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -7224,14 +7230,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;soft_i2c.h: 28: void I2C_Init(void);
-[; ;soft_i2c.h: 29: void I2C_Start(void);
-[; ;soft_i2c.h: 30: void I2C_ReStart(void);
-[; ;soft_i2c.h: 31: void I2C_Stop(void);
-[; ;soft_i2c.h: 32: void I2C_Send_ACK(void);
-[; ;soft_i2c.h: 33: void I2C_Send_NACK(void);
-[; ;soft_i2c.h: 34: bit I2C_Write_Byte(unsigned char);
-[; ;soft_i2c.h: 35: unsigned char I2C_Read_Byte(void);
+[; ;soft_i2c.h: 6: void I2C_Init();
+[; ;soft_i2c.h: 7: void I2C_Start();
+[; ;soft_i2c.h: 8: void I2C_Stop();
+[; ;soft_i2c.h: 9: void I2C_Write_Byte(char byt);
+[; ;soft_i2c.h: 10: char I2C_Read_Byte(char ack);
 "30 main.c
 [v _uuid `uc ~T0 @X0 -> 40 `i e ]
 [; ;main.c: 30: char uuid[40];
@@ -7347,282 +7350,244 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 1103 ]
 }
 "56
-[v _process_data_opt `(v ~T0 @X0 1 ef2`uc`uc ]
+[v _InitRadio `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 56: void process_data_opt(uint8_t msb, uint8_t lsb){
-[e :U _process_data_opt ]
-[v _msb `uc ~T0 @X0 1 r1 ]
-[v _lsb `uc ~T0 @X0 1 r2 ]
+[; ;main.c: 56: void InitRadio(void){
+[e :U _InitRadio ]
 [f ]
+[; ;main.c: 57: wait_5ms(5);
 "57
-[v _raw `i ~T0 @X0 1 a ]
+[e ( _wait_5ms (1 -> 5 `i ]
+[; ;main.c: 58: printf("sys reset\r\n");
 "58
-[v _exponent `ui ~T0 @X0 1 a ]
-[; ;main.c: 57: int16_t raw;
-[; ;main.c: 58: uint16_t exponent = 0;
-[e = _exponent -> -> 0 `i `ui ]
+[e ( _printf :s 2C ]
+[; ;main.c: 59: wait_5ms(5);
 "59
-[v _result `ul ~T0 @X0 1 a ]
-[; ;main.c: 59: uint32_t result = 0;
-[e = _result -> -> -> 0 `i `l `ul ]
+[e ( _wait_5ms (1 -> 5 `i ]
+[; ;main.c: 60: printf("sys get ver\r\n");
 "60
-[v _Illumination `ul ~T0 @X0 1 a ]
-[; ;main.c: 60: uint32_t Illumination = 0;
-[e = _Illumination -> -> -> 0 `i `l `ul ]
-[; ;main.c: 63: raw = ((msb << 8) | lsb);
+[e ( _printf :s 3C ]
+[; ;main.c: 61: read_line();
+"61
+[e ( _read_line ..  ]
+[; ;main.c: 62: printf("radio get sf\r\n");
+"62
+[e ( _printf :s 4C ]
+[; ;main.c: 63: read_line();
 "63
-[e = _raw | << -> _msb `i -> 8 `i -> _lsb `i ]
-[; ;main.c: 65: result = raw&0x0FFF;
+[e ( _read_line ..  ]
+[; ;main.c: 64: printf("radio get bw\r\n");
+"64
+[e ( _printf :s 5C ]
+[; ;main.c: 65: read_line();
 "65
-[e = _result -> -> & _raw -> 4095 `i `l `ul ]
-[; ;main.c: 66: exponent = (raw>>12)&0x000F;
+[e ( _read_line ..  ]
+[; ;main.c: 66: printf("radio get cr\r\n");
 "66
-[e = _exponent -> & >> _raw -> 12 `i -> 15 `i `ui ]
-[; ;main.c: 68: switch(exponent){
+[e ( _printf :s 6C ]
+[; ;main.c: 67: read_line();
+"67
+[e ( _read_line ..  ]
+[; ;main.c: 68: printf("radio get prlen\r\n");
 "68
-[e $U 1106  ]
-{
-[; ;main.c: 69: case 0:
+[e ( _printf :s 7C ]
+[; ;main.c: 69: read_line();
 "69
-[e :U 1107 ]
-[; ;main.c: 70: Illumination = result>>6;
+[e ( _read_line ..  ]
+[; ;main.c: 70: printf("radio get pwr\r\n");
 "70
-[e = _Illumination >> _result -> 6 `i ]
-[; ;main.c: 71: break;
+[e ( _printf :s 8C ]
+[; ;main.c: 71: read_line();
 "71
-[e $U 1105  ]
-[; ;main.c: 72: case 1:
+[e ( _read_line ..  ]
+[; ;main.c: 72: printf("mac pause\r\n");
 "72
-[e :U 1108 ]
-[; ;main.c: 73: Illumination = result>>5;
+[e ( _printf :s 9C ]
+[; ;main.c: 73: read_line();
 "73
-[e = _Illumination >> _result -> 5 `i ]
-[; ;main.c: 74: break;
-"74
-[e $U 1105  ]
-[; ;main.c: 75: case 2:
+[e ( _read_line ..  ]
+[; ;main.c: 75: printf("radio set pwr -2\r\n");
 "75
-[e :U 1109 ]
-[; ;main.c: 76: Illumination = result>>4;
+[e ( _printf :s 10C ]
+[; ;main.c: 76: read_line();
 "76
-[e = _Illumination >> _result -> 4 `i ]
-[; ;main.c: 77: break;
+[e ( _read_line ..  ]
+[; ;main.c: 77: printf("radio set bw 500\r\n");
 "77
-[e $U 1105  ]
-[; ;main.c: 78: case 3:
+[e ( _printf :s 11C ]
+[; ;main.c: 78: read_line();
 "78
-[e :U 1110 ]
-[; ;main.c: 79: Illumination = result>>3;
+[e ( _read_line ..  ]
+[; ;main.c: 79: printf("radio set sf sf7\r\n");
 "79
-[e = _Illumination >> _result -> 3 `i ]
-[; ;main.c: 80: break;
+[e ( _printf :s 12C ]
+[; ;main.c: 80: read_line();
 "80
-[e $U 1105  ]
-[; ;main.c: 81: case 4:
+[e ( _read_line ..  ]
+[; ;main.c: 81: printf("radio set cr 4/8\r\n");
 "81
-[e :U 1111 ]
-[; ;main.c: 82: Illumination = result>>2;
+[e ( _printf :s 13C ]
+[; ;main.c: 82: read_line();
 "82
-[e = _Illumination >> _result -> 2 `i ]
-[; ;main.c: 83: break;
+[e ( _read_line ..  ]
+[; ;main.c: 83: printf("radio set crc on\r\n");
 "83
-[e $U 1105  ]
-[; ;main.c: 84: case 5:
+[e ( _printf :s 14C ]
+[; ;main.c: 84: read_line();
 "84
-[e :U 1112 ]
-[; ;main.c: 85: Illumination = result>>1;
-"85
-[e = _Illumination >> _result -> 1 `i ]
-[; ;main.c: 86: break;
+[e ( _read_line ..  ]
+[; ;main.c: 86: getUUID();
 "86
-[e $U 1105  ]
-[; ;main.c: 87: case 6:
-"87
-[e :U 1113 ]
-[; ;main.c: 88: Illumination = result;
+[e ( _getUUID ..  ]
+[; ;main.c: 88: srand((int)strtol(uuid, (0), 0));
 "88
-[e = _Illumination _result ]
-[; ;main.c: 89: break;
+[e ( _srand (1 -> -> ( _strtol (3 , , -> &U _uuid `*Cuc -> -> 0 `i `**uc -> 0 `i `i `ui ]
 "89
-[e $U 1105  ]
-[; ;main.c: 90: case 7:
+[v _delay `i ~T0 @X0 1 a ]
+[; ;main.c: 89: int delay = 2000+(rand()%1000);
+[e = _delay + -> 2000 `i % ( _rand ..  -> 1000 `i ]
+[; ;main.c: 90: printf("radio set wdt %d\r\n",delay);
 "90
-[e :U 1114 ]
-[; ;main.c: 91: Illumination = result<<1;
+[e ( _printf , (. :s 15C _delay ]
+[; ;main.c: 91: read_line();
 "91
-[e = _Illumination << _result -> 1 `i ]
-[; ;main.c: 92: break;
+[e ( _read_line ..  ]
+[; ;main.c: 92: }
 "92
-[e $U 1105  ]
-[; ;main.c: 93: case 8:
-"93
-[e :U 1115 ]
-[; ;main.c: 94: Illumination = result<<2;
-"94
-[e = _Illumination << _result -> 2 `i ]
-[; ;main.c: 95: break;
-"95
-[e $U 1105  ]
-[; ;main.c: 96: case 9:
-"96
-[e :U 1116 ]
-[; ;main.c: 97: Illumination = result<<3;
-"97
-[e = _Illumination << _result -> 3 `i ]
-[; ;main.c: 98: break;
-"98
-[e $U 1105  ]
-[; ;main.c: 99: case 10:
-"99
-[e :U 1117 ]
-[; ;main.c: 100: Illumination = result<<4;
-"100
-[e = _Illumination << _result -> 4 `i ]
-[; ;main.c: 101: break;
-"101
-[e $U 1105  ]
-[; ;main.c: 102: case 11:
-"102
-[e :U 1118 ]
-[; ;main.c: 103: Illumination = result<<5;
-"103
-[e = _Illumination << _result -> 5 `i ]
-[; ;main.c: 104: break;
-"104
-[e $U 1105  ]
-"105
-}
-[; ;main.c: 105: }
-[e $U 1105  ]
-"68
-[e :U 1106 ]
-[e [\ _exponent , $ -> -> 0 `i `ui 1107
- , $ -> -> 1 `i `ui 1108
- , $ -> -> 2 `i `ui 1109
- , $ -> -> 3 `i `ui 1110
- , $ -> -> 4 `i `ui 1111
- , $ -> -> 5 `i `ui 1112
- , $ -> -> 6 `i `ui 1113
- , $ -> -> 7 `i `ui 1114
- , $ -> -> 8 `i `ui 1115
- , $ -> -> 9 `i `ui 1116
- , $ -> -> 10 `i `ui 1117
- , $ -> -> 11 `i `ui 1118
- 1105 ]
-"105
-[e :U 1105 ]
-[; ;main.c: 106: printf("> %d\r\n",Illumination);
-"106
-[e ( _printf , (. :s 2C _Illumination ]
-[; ;main.c: 108: }
-"108
 [e :UE 1104 ]
 }
-"111
+"94
+[v _InitSensor `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 94: void InitSensor(void){
+[e :U _InitSensor ]
+[f ]
+[; ;main.c: 95: ANSELCbits.ANSC4=0;
+"95
+[e = . . _ANSELCbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 96: I2C_Init();
+"96
+[e ( _I2C_Init ..  ]
+[; ;main.c: 97: I2C_Start();
+"97
+[e ( _I2C_Start ..  ]
+[; ;main.c: 98: I2C_Write_Byte(0x88);
+"98
+[e ( _I2C_Write_Byte (1 -> -> 136 `i `uc ]
+[; ;main.c: 99: I2C_Write_Byte(0x01);
+"99
+[e ( _I2C_Write_Byte (1 -> -> 1 `i `uc ]
+[; ;main.c: 100: I2C_Write_Byte(0xC4);
+"100
+[e ( _I2C_Write_Byte (1 -> -> 196 `i `uc ]
+[; ;main.c: 101: I2C_Write_Byte(0x10);
+"101
+[e ( _I2C_Write_Byte (1 -> -> 16 `i `uc ]
+[; ;main.c: 102: I2C_Stop();
+"102
+[e ( _I2C_Stop ..  ]
+[; ;main.c: 103: }
+"103
+[e :UE 1105 ]
+}
+"105
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 111: void main(void) {
+[; ;main.c: 105: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 112: SYSTEM_Initialize();
-"112
+[; ;main.c: 106: SYSTEM_Initialize();
+"106
 [e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 113: (INTCONbits.GIE = 1);
-"113
+[; ;main.c: 107: (INTCONbits.GIE = 1);
+"107
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 114: (INTCONbits.PEIE = 1);
-"114
+[; ;main.c: 108: (INTCONbits.PEIE = 1);
+"108
 [e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 115: ANSELCbits.ANSC4=0;
-"115
-[e = . . _ANSELCbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 117: I2C_Init();
-"117
-[e ( _I2C_Init ..  ]
-[; ;main.c: 118: wait_5ms(4);
-"118
-[e ( _wait_5ms (1 -> 4 `i ]
-[; ;main.c: 119: I2C_Stop();
-"119
-[e ( _I2C_Stop ..  ]
-[; ;main.c: 120: wait_5ms(4);
-"120
-[e ( _wait_5ms (1 -> 4 `i ]
-[; ;main.c: 123: I2C_Start();
-"123
-[e ( _I2C_Start ..  ]
-[; ;main.c: 124: I2C_Write_Byte(0x88);
-"124
-[e ( _I2C_Write_Byte (1 -> -> 136 `i `uc ]
-[; ;main.c: 125: I2C_Write_Byte(0x01);
-"125
-[e ( _I2C_Write_Byte (1 -> -> 1 `i `uc ]
-[; ;main.c: 126: I2C_Write_Byte(0xC4);
-"126
-[e ( _I2C_Write_Byte (1 -> -> 196 `i `uc ]
-[; ;main.c: 127: I2C_Write_Byte(0x10);
-"127
-[e ( _I2C_Write_Byte (1 -> -> 16 `i `uc ]
-[; ;main.c: 128: I2C_Stop();
-"128
-[e ( _I2C_Stop ..  ]
-[; ;main.c: 130: _delay((unsigned long)((1)*(64000000/4000.0)));
-"130
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 132: while(1){
-"132
-[e :U 1121 ]
+[; ;main.c: 110: InitRadio();
+"110
+[e ( _InitRadio ..  ]
+[; ;main.c: 111: InitSensor();
+"111
+[e ( _InitSensor ..  ]
+[; ;main.c: 114: while(1){
+"114
+[e :U 1108 ]
 {
-[; ;main.c: 134: I2C_Start();
-"134
+[; ;main.c: 116: I2C_Start();
+"116
 [e ( _I2C_Start ..  ]
-[; ;main.c: 135: I2C_Write_Byte(0x88);
-"135
+[; ;main.c: 117: I2C_Write_Byte(0x88);
+"117
 [e ( _I2C_Write_Byte (1 -> -> 136 `i `uc ]
-[; ;main.c: 136: I2C_Write_Byte(0x7E);
-"136
-[e ( _I2C_Write_Byte (1 -> -> 126 `i `uc ]
-[; ;main.c: 137: I2C_Start();
-"137
+[; ;main.c: 118: I2C_Write_Byte(0x00);
+"118
+[e ( _I2C_Write_Byte (1 -> -> 0 `i `uc ]
+[; ;main.c: 119: I2C_Start();
+"119
 [e ( _I2C_Start ..  ]
-[; ;main.c: 138: I2C_Write_Byte(0x89);
-"138
+[; ;main.c: 120: I2C_Write_Byte(0x89);
+"120
 [e ( _I2C_Write_Byte (1 -> -> 137 `i `uc ]
-"139
+"121
 [v _msb `uc ~T0 @X0 1 a ]
-[; ;main.c: 139: uint8_t msb = I2C_Read_Byte();
-[e = _msb ( _I2C_Read_Byte ..  ]
-"140
+[; ;main.c: 121: uint8_t msb = I2C_Read_Byte(1);
+[e = _msb ( _I2C_Read_Byte (1 -> -> 1 `i `uc ]
+"122
 [v _lsb `uc ~T0 @X0 1 a ]
-[; ;main.c: 140: uint8_t lsb = I2C_Read_Byte();
-[e = _lsb ( _I2C_Read_Byte ..  ]
-[; ;main.c: 141: I2C_Stop();
-"141
+[; ;main.c: 122: uint8_t lsb = I2C_Read_Byte(0);
+[e = _lsb ( _I2C_Read_Byte (1 -> -> 0 `i `uc ]
+[; ;main.c: 123: I2C_Stop();
+"123
 [e ( _I2C_Stop ..  ]
-[; ;main.c: 142: printf("%x %x\r\n",msb,lsb);
-"142
-[e ( _printf , , (. :s 3C -> _msb `i -> _lsb `i ]
-[; ;main.c: 143: process_data_opt(msb,lsb);
-"143
-[e ( _process_data_opt (2 , _msb _lsb ]
-[; ;main.c: 145: wait_5ms(200);
-"145
+"124
+[v _crc `uc ~T0 @X0 1 a ]
+[; ;main.c: 124: uint8_t crc = msb ^ lsb;
+[e = _crc -> ^ -> _msb `i -> _lsb `i `uc ]
+[; ;main.c: 128: printf("radio tx 41%s%02X%02X%02X%02X0000\r\n",uuid,inc++,msb,lsb,crc);
+"128
+[e ( _printf , , , , , (. :s 16C -> &U _uuid `*Cuc -> ++ _inc -> -> 1 `i `uc `i -> _msb `i -> _lsb `i -> _crc `i ]
+[; ;main.c: 129: read_line();
+"129
+[e ( _read_line ..  ]
+[; ;main.c: 130: read_line();
+"130
+[e ( _read_line ..  ]
+[; ;main.c: 133: wait_5ms(200);
+"133
 [e ( _wait_5ms (1 -> 200 `i ]
-"147
+[; ;main.c: 134: wait_5ms((rand()%4));
+"134
+[e ( _wait_5ms (1 % ( _rand ..  -> 4 `i ]
+"135
 }
-[e :U 1120 ]
-"132
-[e $U 1121  ]
-[e :U 1122 ]
-[; ;main.c: 147: }
-[; ;main.c: 149: return;
-"149
-[e $UE 1119  ]
-[; ;main.c: 150: }
-"150
-[e :UE 1119 ]
+[e :U 1107 ]
+"114
+[e $U 1108  ]
+[e :U 1109 ]
+[; ;main.c: 135: }
+[; ;main.c: 137: return;
+"137
+[e $UE 1106  ]
+[; ;main.c: 138: }
+"138
+[e :UE 1106 ]
 }
-[p f _printf 12583040 ]
-[a 3C 37 120 32 37 120 13 10 0 ]
+[p f _printf 10780804 ]
+[a 5C 114 97 100 105 111 32 103 101 116 32 98 119 13 10 0 ]
+[a 2C 115 121 115 32 114 101 115 101 116 13 10 0 ]
+[a 8C 114 97 100 105 111 32 103 101 116 32 112 119 114 13 10 0 ]
+[a 3C 115 121 115 32 103 101 116 32 118 101 114 13 10 0 ]
+[a 6C 114 97 100 105 111 32 103 101 116 32 99 114 13 10 0 ]
+[a 14C 114 97 100 105 111 32 115 101 116 32 99 114 99 32 111 110 13 10 0 ]
+[a 7C 114 97 100 105 111 32 103 101 116 32 112 114 108 101 110 13 10 0 ]
 [a 1C 115 121 115 32 103 101 116 32 104 119 101 117 105 13 10 0 ]
-[a 2C 62 32 37 100 13 10 0 ]
+[a 4C 114 97 100 105 111 32 103 101 116 32 115 102 13 10 0 ]
+[a 9C 109 97 99 32 112 97 117 115 101 13 10 0 ]
+[a 15C 114 97 100 105 111 32 115 101 116 32 119 100 116 32 37 100 13 10 0 ]
+[a 13C 114 97 100 105 111 32 115 101 116 32 99 114 32 52 47 56 13 10 0 ]
+[a 12C 114 97 100 105 111 32 115 101 116 32 115 102 32 115 102 55 13 10 0 ]
+[a 10C 114 97 100 105 111 32 115 101 116 32 112 119 114 32 45 50 13 10 0 ]
+[a 11C 114 97 100 105 111 32 115 101 116 32 98 119 32 53 48 48 13 10 0 ]
+[a 16C 114 97 100 105 111 32 116 120 32 52 49 37 115 37 48 50 88 37 48 50 88 37 48 50 88 37 48 50 88 48 48 48 48 13 10 0 ]
