@@ -47,12 +47,18 @@ void wait_1ms(int j){
     for(uint8_t i=0;i<j;i++) { __delay_ms(1); }   
 }
 
+/**
+ * Get UUID from RN2483
+ */
 void getUUID(){
     printf("sys get hweui\r\n");
     read_line(); 
     strcpy(uuid,line); 
 }
 
+/**
+ * Setup RN2483
+ */
 void InitRadio(void){
     wait_5ms(5); 
     printf("sys reset\r\n");
@@ -91,6 +97,9 @@ void InitRadio(void){
     read_line(); 
 }
 
+/**
+ * Setup OPT3001
+ */
 void InitSensor(void){
     ANSELCbits.ANSC4=0;
     I2C_Init();  
@@ -102,6 +111,11 @@ void InitSensor(void){
     I2C_Stop();
 }
 
+/**
+ * Main code 
+ * There is a loop after initialization where data from OPT3001 are gathered.
+ * Gathered illumination value is then sent via RN2483 module.
+ */
 void main(void) {
     SYSTEM_Initialize(); 	
     INTERRUPT_GlobalInterruptEnable();  
