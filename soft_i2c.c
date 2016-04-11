@@ -8,34 +8,59 @@
 
 #define _XTAL_FREQ 64000000
 
+/**
+ * Set SDA
+ */
 void I2C_SDA_SET() {
     LATC4 = 1;
 }
 
+/**
+ * Clear SDA
+ */
 void I2C_SDA_CLEAR() {
     LATC4 = 0;
 }
 
+/**
+ * Set SDA IN
+ */
 void I2C_SDA_IN_SET() {
     TRISC4 = 1;
 }
 
+/**
+ * Set SDA OUT
+ */
 void I2C_SDA_OUT_SET() {
     TRISC4 = 0;
 }
 
+/**
+ * Set SCL
+ */
 void I2C_SCL_SET() {
     LATC3 = 1;
 }
 
+/**
+ * Cleat SCL
+ */
 void I2C_SCL_CLEAR() {
     LATC3 = 0;
 }
 
+/**
+ * Set SCL OUT
+ */
 void I2C_SCL_OUT_SET() {
     TRISC3 = 0;
 }
 
+/**
+ * Reat SDA value
+ * @return SDA value
+ */
 char I2C_SDA_READ() {
     return PORTCbits.RC4;
 }

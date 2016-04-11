@@ -63,13 +63,13 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "42 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\main.c
 [v _wait_5ms wait_5ms `(v  1 e 1 0 ]
-"50
+"53
 [v _getUUID getUUID `(v  1 e 1 0 ]
-"56
+"62
 [v _InitRadio InitRadio `(v  1 e 1 0 ]
-"94
+"103
 [v _InitSensor InitSensor `(v  1 e 1 0 ]
-"105
+"119
 [v _main main `(v  1 e 1 0 ]
 "64 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\mcc_generated_files/epwm1.c
 [v _EPWM1_Initialize EPWM1_Initialize `(v  1 e 1 0 ]
@@ -103,29 +103,29 @@
 [v _TMR2_StartTimer TMR2_StartTimer `(v  1 e 1 0 ]
 "11 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\soft_i2c.c
 [v _I2C_SDA_SET I2C_SDA_SET `(v  1 e 1 0 ]
-"12
-[v _I2C_SDA_CLEAR I2C_SDA_CLEAR `(v  1 e 1 0 ]
-"14
-[v _I2C_SDA_IN_SET I2C_SDA_IN_SET `(v  1 e 1 0 ]
 "15
+[v _I2C_SDA_CLEAR I2C_SDA_CLEAR `(v  1 e 1 0 ]
+"19
+[v _I2C_SDA_IN_SET I2C_SDA_IN_SET `(v  1 e 1 0 ]
+"23
 [v _I2C_SDA_OUT_SET I2C_SDA_OUT_SET `(v  1 e 1 0 ]
-"17
+"27
 [v _I2C_SCL_SET I2C_SCL_SET `(v  1 e 1 0 ]
-"18
+"31
 [v _I2C_SCL_CLEAR I2C_SCL_CLEAR `(v  1 e 1 0 ]
-"20
+"35
 [v _I2C_SCL_OUT_SET I2C_SCL_OUT_SET `(v  1 e 1 0 ]
-"22
+"39
 [v _I2C_SDA_READ I2C_SDA_READ `(uc  1 e 1 0 ]
-"25
+"46
 [v _I2C_Init I2C_Init `(v  1 e 1 0 ]
-"34
+"57
 [v _I2C_Start I2C_Start `(v  1 e 1 0 ]
-"50
+"75
 [v _I2C_Stop I2C_Stop `(v  1 e 1 0 ]
-"61
+"89
 [v _I2C_Write_Byte I2C_Write_Byte `(v  1 e 1 0 ]
-"96
+"124
 [v _I2C_Read_Byte I2C_Read_Byte `(uc  1 e 1 0 ]
 "49 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f26k22.h
 [v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
@@ -499,16 +499,16 @@
 [v _index index `i  1 e 2 0 ]
 "78
 [v _ready ready `VEuc  1 e 1 0 ]
-"105 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\main.c
+"119 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"122
+"136
 [v main@lsb lsb `uc  1 a 1 39 ]
-"121
+"135
 [v main@msb msb `uc  1 a 1 38 ]
-"124
-[v main@crc crc `uc  1 a 1 37 ]
 "138
+[v main@crc crc `uc  1 a 1 37 ]
+"152
 } 0
 "112 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -550,48 +550,49 @@
 {
 "89
 } 0
-"94 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\main.c
+"103 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\main.c
 [v _InitSensor InitSensor `(v  1 e 1 0 ]
 {
-"103
+"112
 } 0
-"61 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\soft_i2c.c
+"89 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\soft_i2c.c
 [v _I2C_Write_Byte I2C_Write_Byte `(v  1 e 1 0 ]
 {
 [v I2C_Write_Byte@byt byt `uc  1 a 1 wreg ]
-"63
+"90
 [v I2C_Write_Byte@i i `uc  1 a 1 37 ]
-"61
+"89
 [v I2C_Write_Byte@byt byt `uc  1 a 1 wreg ]
-"64
+"91
 [v I2C_Write_Byte@byt byt `uc  1 a 1 36 ]
-"94
+"117
 } 0
-"50
+"75
 [v _I2C_Stop I2C_Stop `(v  1 e 1 0 ]
 {
-"59
+"83
 } 0
-"34
+"57
 [v _I2C_Start I2C_Start `(v  1 e 1 0 ]
 {
-"48
+"70
 } 0
-"25
+"46
 [v _I2C_Init I2C_Init `(v  1 e 1 0 ]
 {
-"32
+"52
 } 0
-"20
+"35
 [v _I2C_SCL_OUT_SET I2C_SCL_OUT_SET `(v  1 e 1 0 ]
 {
+"37
 } 0
-"56 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\main.c
+"62 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\main.c
 [v _InitRadio InitRadio `(v  1 e 1 0 ]
 {
-"89
+"95
 [v InitRadio@delay delay `i  1 a 2 35 ]
-"92
+"98
 } 0
 "42
 [v _wait_5ms wait_5ms `(v  1 e 1 0 ]
@@ -599,7 +600,7 @@
 "43
 [v wait_5ms@i i `uc  1 a 1 42 ]
 "42
-[v wait_5ms@j j `i  1 p 2 8 ]
+[v wait_5ms@j j `i  1 p 2 14 ]
 "44
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\strtol.c
@@ -673,10 +674,10 @@
 [v ___lmul@multiplicand multiplicand `ul  1 p 4 4 ]
 "129
 } 0
-"50 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\main.c
+"53 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\main.c
 [v _getUUID getUUID `(v  1 e 1 0 ]
 {
-"54
+"57
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\strcpy.c
 [v _strcpy strcpy `(*.39uc  1 e 2 0 ]
@@ -787,47 +788,54 @@
 [v ___awmod@divisor divisor `i  1 p 2 10 ]
 "35
 } 0
-"96 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\soft_i2c.c
+"124 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\soft_i2c.c
 [v _I2C_Read_Byte I2C_Read_Byte `(uc  1 e 1 0 ]
 {
 [v I2C_Read_Byte@ack ack `uc  1 a 1 wreg ]
-"98
+"125
 [v I2C_Read_Byte@i i `uc  1 a 1 38 ]
-"99
+"126
 [v I2C_Read_Byte@val val `uc  1 a 1 37 ]
-"96
+"124
 [v I2C_Read_Byte@ack ack `uc  1 a 1 wreg ]
-"99
+"126
 [v I2C_Read_Byte@ack ack `uc  1 a 1 36 ]
-"144
+"166
 } 0
 "11
 [v _I2C_SDA_SET I2C_SDA_SET `(v  1 e 1 0 ]
 {
+"13
 } 0
-"22
+"39
 [v _I2C_SDA_READ I2C_SDA_READ `(uc  1 e 1 0 ]
 {
+"41
 } 0
-"15
+"23
 [v _I2C_SDA_OUT_SET I2C_SDA_OUT_SET `(v  1 e 1 0 ]
 {
+"25
 } 0
-"14
+"19
 [v _I2C_SDA_IN_SET I2C_SDA_IN_SET `(v  1 e 1 0 ]
 {
+"21
 } 0
-"12
+"15
 [v _I2C_SDA_CLEAR I2C_SDA_CLEAR `(v  1 e 1 0 ]
 {
-} 0
 "17
+} 0
+"27
 [v _I2C_SCL_SET I2C_SCL_SET `(v  1 e 1 0 ]
 {
+"29
 } 0
-"18
+"31
 [v _I2C_SCL_CLEAR I2C_SCL_CLEAR `(v  1 e 1 0 ]
 {
+"33
 } 0
 "67 C:\Users\Tom\MPLABXProjects\LoRaPICSensor\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]

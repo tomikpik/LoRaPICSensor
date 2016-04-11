@@ -9142,12 +9142,14 @@ void wait_1ms(int j){
 for(uint8_t i=0;i<j;i++) { _delay((unsigned long)((1)*(64000000/4000.0))); }
 }
 
+# 53
 void getUUID(){
 printf("sys get hweui\r\n");
 read_line();
 strcpy(uuid,line);
 }
 
+# 62
 void InitRadio(void){
 wait_5ms(5);
 printf("sys reset\r\n");
@@ -9186,6 +9188,7 @@ printf("radio set wdt %d\r\n",delay);
 read_line();
 }
 
+# 103
 void InitSensor(void){
 ANSELCbits.ANSC4=0;
 I2C_Init();
@@ -9197,6 +9200,7 @@ I2C_Write_Byte(0x10);
 I2C_Stop();
 }
 
+# 119
 void main(void) {
 SYSTEM_Initialize();
 (INTCONbits.GIE = 1);
@@ -9225,8 +9229,8 @@ read_line();
 read_line();
 
 
-wait_5ms(200);
-wait_5ms((rand()%4));
+wait_5ms(100);
+wait_5ms((rand()%3));
 }
 
 return;

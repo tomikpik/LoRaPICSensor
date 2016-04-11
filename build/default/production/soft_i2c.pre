@@ -8953,22 +8953,40 @@ void I2C_Write_Byte(char byt);
 char I2C_Read_Byte(char ack);
 
 # 11 "soft_i2c.c"
-void I2C_SDA_SET() { LATC4 = 1; }
-void I2C_SDA_CLEAR() { LATC4 = 0; }
+void I2C_SDA_SET() {
+LATC4 = 1;
+}
 
-void I2C_SDA_IN_SET() { TRISC4 = 1; }
-void I2C_SDA_OUT_SET() { TRISC4 = 0; }
+void I2C_SDA_CLEAR() {
+LATC4 = 0;
+}
 
-void I2C_SCL_SET() { LATC3 = 1; }
-void I2C_SCL_CLEAR() { LATC3 = 0; }
+void I2C_SDA_IN_SET() {
+TRISC4 = 1;
+}
 
-void I2C_SCL_OUT_SET() { TRISC3 = 0; }
+void I2C_SDA_OUT_SET() {
+TRISC4 = 0;
+}
 
-char I2C_SDA_READ() { return PORTCbits.RC4; }
+void I2C_SCL_SET() {
+LATC3 = 1;
+}
 
+void I2C_SCL_CLEAR() {
+LATC3 = 0;
+}
 
-void I2C_Init()
-{
+void I2C_SCL_OUT_SET() {
+TRISC3 = 0;
+}
+
+char I2C_SDA_READ() {
+return PORTCbits.RC4;
+}
+
+# 46
+void I2C_Init() {
 I2C_SDA_OUT_SET();
 I2C_SCL_OUT_SET();
 I2C_SCL_SET();
@@ -8976,8 +8994,8 @@ I2C_SDA_SET();
 _delay((unsigned long)((10)*(64000000/4000.0)));
 }
 
-void I2C_Start()
-{
+# 57
+void I2C_Start() {
 I2C_SDA_OUT_SET();
 
 
@@ -8992,8 +9010,8 @@ I2C_SCL_CLEAR();
 _delay((unsigned long)((20)*(64000000/4000000.0)));
 }
 
-void I2C_Stop()
-{
+# 75
+void I2C_Stop() {
 I2C_SDA_OUT_SET();
 
 
@@ -9003,20 +9021,16 @@ I2C_SDA_SET();
 _delay((unsigned long)((20)*(64000000/4000000.0)));
 }
 
-void I2C_Write_Byte(char byt)
-{
+# 89
+void I2C_Write_Byte(char byt) {
 char i;
 I2C_SDA_OUT_SET();
 
-for(i=0;i<8;i++)
-{
-if(byt & 0x80)
-{
+for (i = 0; i < 8; i++) {
+if (byt & 0x80) {
 I2C_SDA_SET();
 _delay((unsigned long)((20)*(64000000/4000000.0)));
-}
-else
-{
+} else {
 I2C_SDA_CLEAR();
 _delay((unsigned long)((20)*(64000000/4000000.0)));
 }
@@ -9025,7 +9039,7 @@ I2C_SCL_SET();
 _delay((unsigned long)((20)*(64000000/4000000.0)));
 I2C_SCL_CLEAR();
 _delay((unsigned long)((20)*(64000000/4000000.0)));
-byt<<=1;
+byt <<= 1;
 }
 I2C_SDA_IN_SET();
 I2C_SCL_SET();
@@ -9038,24 +9052,22 @@ I2C_SDA_OUT_SET();
 
 }
 
-char I2C_Read_Byte(char ack)
-{
+# 124
+char I2C_Read_Byte(char ack) {
 char i;
 char val = 0;
 I2C_SDA_IN_SET();
 
 
-for(i=0;i<8;i++)
-{
-if(i!=0) { val<<=1; }
+for (i = 0; i < 8; i++) {
+if (i != 0) {
+val <<= 1;
+}
 I2C_SCL_SET();
 _delay((unsigned long)((20)*(64000000/4000000.0)));
-if(I2C_SDA_READ()!=0)
-{
+if (I2C_SDA_READ() != 0) {
 val |= 0x01;
-}
-else
-{
+} else {
 val &= 0xFE;
 
 }
@@ -9067,16 +9079,13 @@ _delay((unsigned long)((20)*(64000000/4000000.0)));
 I2C_SDA_OUT_SET();
 
 
-if(ack)
-{
+if (ack) {
 I2C_SDA_CLEAR();
 I2C_SCL_SET();
 _delay((unsigned long)((20)*(64000000/4000000.0)));
 I2C_SCL_CLEAR();
 _delay((unsigned long)((20)*(64000000/4000000.0)));
-}
-else
-{
+} else {
 I2C_SDA_SET();
 I2C_SCL_SET();
 _delay((unsigned long)((20)*(64000000/4000000.0)));
